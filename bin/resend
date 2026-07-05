@@ -1,0 +1,59 @@
+#!/usr/bin/env php
+<?php namespace ProcessWire;
+
+/**
+ * Resend CLI
+ *
+ * Bootstraps ProcessWire and dispatches to Smnv\Resend\Cli.
+ *
+ * Usage:
+ *   php site/modules/Resend/bin/resend <command> [arguments] [--options]
+ *   php site/modules/Resend/bin/resend help
+ *
+ * The ProcessWire root is located by walking up from this script.
+ * Override with the PW_PATH environment variable if needed:
+ *   PW_PATH=/var/www/site php bin/resend status
+ */
+
+if(php_sapi_name() !== 'cli') {
+	fwrite(STDERR, "CLI only.\n");
+	exit(1);
+}
+
+// Locate the ProcessWire root (contains index.php and wire/)
+$root = getenv('PW_PATH');
+if($root === false || !strlen($root)) {
+	// Walk up from the script, then from the working directory. The cwd pass
+	// covers symlinked module directories, where __DIR__ resolves to the real
+	// path outside the ProcessWire installation.
+	$root = '';
+	foreach([__DIR__, getcwd()] as $dir) {
+		if($dir === false) continue;
+		for($i = 0; $i < 8; $i++) {
+			if(is_file($dir . '/index.php') && is_dir($dir . '/wire')) {
+				$root = $dir;
+				break 2;
+			}
+			$dir = dirname($dir);
+		}
+	}
+}
+
+if(!strlen($root) || !is_file($root . '/index.php')) {
+	fwrite(STDERR, "ProcessWire root not found. Set PW_PATH=/path/to/pw-root\n");
+	exit(1);
+}
+
+require $root . '/index.php';
+
+/** @var Resend $resend */
+$resend = wire()->modules->get('Resend');
+if(!$resend) {
+	fwrite(STDERR, "Resend module is not installed.\n");
+	exit(1);
+}
+
+require_once __DIR__ . '/../src/Cli.php';
+
+$cli = new \Smnv\Resend\Cli($resend);
+exit($cli->run($argv));
