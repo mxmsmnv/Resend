@@ -38,10 +38,10 @@ foreach($eventTypes as $event) {
 
 <div class="uk-grid-small uk-flex-bottom uk-margin-medium-bottom" uk-grid>
 	<div class="uk-width-expand@m">
-		<p class="uk-text-muted uk-margin-remove">Send Resend activity to another system when it needs to react to deliveries, engagement, inbound mail, contact changes or domain updates.</p>
+		<p class="uk-text-muted uk-margin-remove"><?= resendE('Send Resend activity to another system when it needs to react to deliveries, engagement, inbound mail, contact changes or domain updates.') ?></p>
 	</div>
 	<div class="uk-width-auto@m">
-		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/">Received Events</a>
+		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/"><?= resendE('Received Events') ?></a>
 	</div>
 </div>
 
@@ -55,36 +55,36 @@ foreach($eventTypes as $event) {
 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom">
 	<div class="uk-grid-medium uk-grid-divider" uk-grid>
 		<div class="uk-width-1-3@l">
-			<h3 class="uk-margin-remove-top">Create Webhook</h3>
-			<p class="uk-text-muted">Add the HTTPS endpoint that should receive Resend updates. After creation, copy the signing secret immediately and store it with that endpoint.</p>
-			<p class="uk-text-meta uk-margin-remove-bottom">Choose only the signals your endpoint actually handles.</p>
+			<h3 class="uk-margin-remove-top"><?= resendE('Create Webhook') ?></h3>
+			<p class="uk-text-muted"><?= resendE('Add the HTTPS endpoint that should receive Resend updates. After creation, copy the signing secret immediately and store it with that endpoint.') ?></p>
+			<p class="uk-text-meta uk-margin-remove-bottom"><?= resendE('Choose only the signals your endpoint actually handles.') ?></p>
 		</div>
 		<div class="uk-width-2-3@l">
 	<form class="uk-form-stacked" method="post" action="<?= $actionUrl ?>">
 		<?= resendCsrf($csrf) ?>
 		<input type="hidden" name="action" value="create">
 		<div class="uk-margin">
-			<label class="uk-form-label">Destination URL</label>
+			<label class="uk-form-label"><?= resendE('Destination URL') ?></label>
 			<input class="uk-input" type="url" name="endpoint_url" placeholder="https://example.com/resend-webhook/" required>
 		</div>
-		<p class="uk-form-label">Send These Updates</p>
+		<p class="uk-form-label"><?= resendE('Send These Updates') ?></p>
 		<div class="uk-grid-medium uk-child-width-1-2@m" uk-grid>
 			<?php foreach($eventGroups as $group => $events): ?>
 			<div>
-				<p class="uk-text-meta uk-text-uppercase uk-margin-remove"><?= $sanitizer->entities($group) ?></p>
+				<p class="uk-text-meta uk-text-uppercase uk-margin-remove"><?= resendE($group) ?></p>
 				<div class="uk-margin-small-top">
 					<?php foreach($events as $event): ?>
 					<label class="uk-display-block uk-margin-small-bottom">
 						<input class="uk-checkbox" type="checkbox" name="events[]" value="<?= $sanitizer->entities($event['event']) ?>">
-						<span><?= $sanitizer->entities($event['label']) ?></span>
-						<?php if(strlen($event['note'])): ?><span class="uk-text-meta"> <?= $sanitizer->entities($event['note']) ?></span><?php endif; ?>
+						<span><?= resendE($event['label']) ?></span>
+						<?php if(strlen($event['note'])): ?><span class="uk-text-meta"> <?= resendE($event['note']) ?></span><?php endif; ?>
 					</label>
 					<?php endforeach; ?>
 				</div>
 			</div>
 			<?php endforeach; ?>
 		</div>
-		<p class="uk-margin-remove-bottom uk-margin-top"><button type="submit" class="uk-button uk-button-primary">Create Webhook</button></p>
+		<p class="uk-margin-remove-bottom uk-margin-top"><button type="submit" class="uk-button uk-button-primary"><?= resendE('Create Webhook') ?></button></p>
 	</form>
 		</div>
 	</div>
@@ -94,18 +94,18 @@ foreach($eventTypes as $event) {
 	<div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom">
 		<div class="uk-grid-medium uk-flex-middle" uk-grid>
 			<div class="uk-width-expand@m">
-				<h3 class="uk-margin-remove-top">No Webhooks Yet</h3>
-				<p class="uk-margin-remove-bottom">Create one when another system needs to receive delivery updates, inbound mail, contact changes or domain status changes.</p>
+				<h3 class="uk-margin-remove-top"><?= resendE('No Webhooks Yet') ?></h3>
+				<p class="uk-margin-remove-bottom"><?= resendE('Create one when another system needs to receive delivery updates, inbound mail, contact changes or domain status changes.') ?></p>
 			</div>
 			<div class="uk-width-auto@m">
-				<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/">View Received Events</a>
+				<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/"><?= resendE('View Received Events') ?></a>
 			</div>
 		</div>
 	</div>
 <?php else: ?>
 	<div class="uk-overflow-auto uk-margin-medium-bottom">
 	<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-		<tr><th>Destination</th><th>Updates Sent</th><th>Status</th><th>Actions</th></tr>
+		<tr><th><?= resendE('Destination') ?></th><th><?= resendE('Updates Sent') ?></th><th><?= resendE('Status') ?></th><th><?= resendE('Actions') ?></th></tr>
 		<?php foreach($webhooks as $w): ?>
 		<?php
 			$events = (array) ($w['events'] ?? []);

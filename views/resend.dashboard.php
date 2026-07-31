@@ -14,10 +14,10 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardBars')) {
 		$count = count($days);
 		if(!$count) return '';
 		$signals = [
-			'delivered' => ['Delivered', 'var(--uk-success, #32d296)', '1'],
-			'opened' => ['Opened', 'var(--uk-primary, #1e87f0)', '.92'],
-			'clicked' => ['Clicked', 'var(--uk-warning, #faa05a)', '1'],
-			'problem' => ['Bounced/Complained', 'var(--uk-danger, #f0506e)', '1'],
+			'delivered' => [resendT('Delivered'), 'var(--uk-success, #32d296)', '1'],
+			'opened' => [resendT('Opened'), 'var(--uk-primary, #1e87f0)', '.92'],
+			'clicked' => [resendT('Clicked'), 'var(--uk-warning, #faa05a)', '1'],
+			'problem' => [resendT('Bounced/Complained'), 'var(--uk-danger, #f0506e)', '1'],
 		];
 		$max = 1;
 		foreach($days as $day) $max = max($max, (int) ($day['count'] ?? 0));
@@ -70,7 +70,7 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardBars')) {
 
 if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 	function resendDashboardStatusBars(array $statuses, $total, $process, $sanitizer) {
-		if(!$total) return '<p class="uk-text-meta">No recent email statuses are available yet.</p>';
+		if(!$total) return '<p class="uk-text-meta">' . resendE('No recent email statuses are available yet.') . '</p>';
 		$out = '';
 		foreach($statuses as $status => $count) {
 			$count = (int) $count;
@@ -87,31 +87,31 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 <?= resendNav($adminUrl, '', $restricted) ?>
 <div class="uk-grid-small uk-flex-bottom uk-margin-medium-bottom" uk-grid>
 	<div class="uk-width-expand@m">
-		<p class="uk-text-muted">Start here when checking the integration. The dashboard highlights readiness, recent delivery behavior and the next operational actions to check before sending.</p>
+		<p class="uk-text-muted"><?= resendE('Start here when checking the integration. The dashboard highlights readiness, recent delivery behavior and the next operational actions to check before sending.') ?></p>
 	</div>
 	<div class="uk-width-auto@m">
 		<div class="uk-grid-medium uk-child-width-auto uk-flex-right@m" uk-grid>
-			<div><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>domains/">Manage Domains</a></div>
-			<div><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>emails/">View Emails</a></div>
-			<div><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= $adminUrl ?>test/">Test Send</a></div>
+			<div><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>domains/"><?= resendE('Manage Domains') ?></a></div>
+			<div><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>emails/"><?= resendE('View Emails') ?></a></div>
+			<div><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= $adminUrl ?>test/"><?= resendE('Test Send') ?></a></div>
 		</div>
 	</div>
 </div>
 
 <?php if(!$configured): ?>
 	<div class="uk-card uk-card-default uk-card-body uk-margin-medium-bottom">
-		<h3>Configuration Required</h3>
-		<p>Configure the <a href="<?= wire()->config->urls->admin ?>module/edit?name=Resend">Resend module</a> with your Resend API key, default sender and delivery options to get started.</p>
-		<p><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= wire()->config->urls->admin ?>module/edit?name=Resend">Open Settings</a></p>
+		<h3><?= resendE('Configuration Required') ?></h3>
+		<p><?= resendE('Configure the') ?> <a href="<?= wire()->config->urls->admin ?>module/edit?name=Resend"><?= resendE('Resend module') ?></a> <?= resendE('with your Resend API key, default sender and delivery options to get started.') ?></p>
+		<p><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= wire()->config->urls->admin ?>module/edit?name=Resend"><?= resendE('Open Settings') ?></a></p>
 	</div>
 <?php elseif($restricted): ?>
 	<div class="uk-card uk-card-default uk-card-body uk-margin-medium-bottom">
-		<h3>Sending-Only API Key</h3>
-		<p>The configured API key is restricted to sending emails. WireMail sending and the <a href="<?= $adminUrl ?>test/">Test Send</a> screen work; management sections (emails, domains, contacts, broadcasts, ...) are unavailable and locked in the navigation above.</p>
-		<p>To unlock them, create a key with <strong>Full access</strong> permission at resend.com/api-keys and update it in the <a href="<?= wire()->config->urls->admin ?>module/edit?name=Resend">module configuration</a>.</p>
+		<h3><?= resendE('Sending-Only API Key') ?></h3>
+		<p><?= resendE('The configured API key is restricted to sending emails. WireMail sending and the') ?> <a href="<?= $adminUrl ?>test/"><?= resendE('Test Send') ?></a> <?= resendE('screen work; management sections (emails, domains, contacts, broadcasts, ...) are unavailable and locked in the navigation above.') ?></p>
+		<p><?= resendE('To unlock them, create a key with') ?> <strong><?= resendE('Full access') ?></strong> <?= resendE('permission at resend.com/api-keys and update it in the') ?> <a href="<?= wire()->config->urls->admin ?>module/edit?name=Resend"><?= resendE('module configuration') ?></a>.</p>
 		<div class="uk-grid-medium uk-flex-middle" uk-grid>
 			<?= resendActionForm($adminUrl, ['action' => 'recheck'], 'Re-check permission', $csrf) ?>
-			<div><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>test/">Send Test</a></div>
+			<div><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>test/"><?= resendE('Send Test') ?></a></div>
 		</div>
 		<?= resendNote("The permission level is cached for an hour. If you changed this key's permission in the Resend dashboard, re-check to pick it up immediately.") ?>
 	</div>
@@ -162,8 +162,8 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 		<div class="uk-width-2-3@l">
 			<div class="uk-card uk-card-default uk-card-body uk-card-small uk-height-1-1">
 				<div class="uk-flex uk-flex-between uk-flex-middle uk-margin-small-bottom">
-					<h3 class="uk-margin-remove">Sending Activity</h3>
-					<span class="uk-text-meta">Last 14 days</span>
+					<h3 class="uk-margin-remove"><?= resendE('Sending Activity') ?></h3>
+					<span class="uk-text-meta"><?= resendE('Last 14 days') ?></span>
 				</div>
 				<?= resendDashboardBars($statsSignalDays, $sanitizer) ?>
 				<p class="uk-text-meta">Based on the <?= (int) $statsTotal ?> most recent emails returned by Resend.</p>
@@ -171,7 +171,7 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 		</div>
 		<div class="uk-width-1-3@l">
 			<div class="uk-card uk-card-default uk-card-body uk-card-small uk-height-1-1">
-				<h3>Status Breakdown</h3>
+				<h3><?= resendE('Status Breakdown') ?></h3>
 				<?= resendDashboardStatusBars($statsStatuses, (int) $statsTotal, $process, $sanitizer) ?>
 			</div>
 		</div>
@@ -181,11 +181,11 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 		<div>
 			<div class="uk-card uk-card-default uk-card-body uk-card-small uk-height-1-1">
 				<div class="uk-flex uk-flex-between uk-flex-middle uk-margin-small-bottom">
-					<h3 class="uk-margin-remove">Next Actions</h3>
+					<h3 class="uk-margin-remove"><?= resendE('Next Actions') ?></h3>
 					<span class="uk-text-meta"><?= count($attention) ?> item<?= count($attention) === 1 ? '' : 's' ?></span>
 				</div>
 				<?php $primaryAction = $attention[0]; ?>
-				<p class="uk-margin-small-top">Recommended next step for this workspace.</p>
+				<p class="uk-margin-small-top"><?= resendE('Recommended next step for this workspace.') ?></p>
 				<p class="uk-margin-remove-bottom">
 					<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $sanitizer->entities($primaryAction[1]) ?>"><?= $sanitizer->entities($primaryAction[0]) ?></a>
 				</p>
@@ -201,7 +201,7 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 		<div>
 			<div class="uk-card uk-card-default uk-card-body uk-card-small uk-height-1-1">
 				<div class="uk-flex uk-flex-between uk-flex-middle uk-margin-small-bottom">
-					<h3 class="uk-margin-remove">Domain Mix</h3>
+					<h3 class="uk-margin-remove"><?= resendE('Domain Mix') ?></h3>
 					<span class="uk-text-meta"><?= $domainCount ?> total</span>
 				</div>
 				<?php if(count($domainStatuses)): ?>
@@ -218,7 +218,7 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 						<?php endforeach; ?>
 					</div>
 				<?php else: ?>
-					<p class="uk-text-muted uk-margin-remove">No domains. Add and verify a domain before production sending.</p>
+					<p class="uk-text-muted uk-margin-remove"><?= resendE('No domains. Add and verify a domain before production sending.') ?></p>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -229,14 +229,14 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 			<div class="uk-card uk-card-default uk-card-body uk-card-small">
 				<div class="uk-grid-small uk-flex-middle" uk-grid>
 					<div class="uk-width-1-4@l uk-width-1-3@m">
-						<h3 class="uk-margin-remove">Delivery Signals</h3>
+						<h3 class="uk-margin-remove"><?= resendE('Delivery Signals') ?></h3>
 					</div>
 					<div class="uk-width-expand">
 						<div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@s" uk-grid>
-							<div><span class="uk-text-meta uk-text-uppercase">Delivered</span><div class="uk-text-large"><?= $delivered ?></div></div>
-							<div><span class="uk-text-meta uk-text-uppercase">Opened</span><div class="uk-text-large"><?= $opened ?></div></div>
-							<div><span class="uk-text-meta uk-text-uppercase">Clicked</span><div class="uk-text-large"><?= $clicked ?></div></div>
-							<div><span class="uk-text-meta uk-text-uppercase">Bounced or Complained</span><div class="uk-text-large"><?= $bounced + $complained ?></div></div>
+							<div><span class="uk-text-meta uk-text-uppercase"><?= resendE('Delivered') ?></span><div class="uk-text-large"><?= $delivered ?></div></div>
+							<div><span class="uk-text-meta uk-text-uppercase"><?= resendE('Opened') ?></span><div class="uk-text-large"><?= $opened ?></div></div>
+							<div><span class="uk-text-meta uk-text-uppercase"><?= resendE('Clicked') ?></span><div class="uk-text-large"><?= $clicked ?></div></div>
+							<div><span class="uk-text-meta uk-text-uppercase"><?= resendE('Bounced or Complained') ?></span><div class="uk-text-large"><?= $bounced + $complained ?></div></div>
 						</div>
 					</div>
 				</div>
@@ -244,10 +244,10 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 		</div>
 	</div>
 
-	<h2>Domains</h2>
+	<h2><?= resendE('Domains') ?></h2>
 	<div class="uk-overflow-auto uk-margin-medium-bottom">
 	<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-		<tr><th>Domain</th><th>Status</th><th>Region</th><th>Created</th></tr>
+		<tr><th><?= resendE('Domain') ?></th><th><?= resendE('Status') ?></th><th><?= resendE('Region') ?></th><th><?= resendE('Created') ?></th></tr>
 		<?php foreach($domains as $d): ?>
 		<tr>
 			<td><a href="<?= $adminUrl ?>domain/?id=<?= rawurlencode($d['id']) ?>"><?= $sanitizer->entities($d['name'] ?? '') ?></a></td>
@@ -260,10 +260,10 @@ if(!function_exists(__NAMESPACE__ . '\resendDashboardStatusBars')) {
 	</table>
 	</div>
 
-	<h2>Recent Emails</h2>
+	<h2><?= resendE('Recent Emails') ?></h2>
 	<div class="uk-overflow-auto uk-margin-medium-bottom">
 	<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-		<tr><th>To</th><th>Subject</th><th>Status</th><th>Date</th></tr>
+		<tr><th><?= resendE('To') ?></th><th><?= resendE('Subject') ?></th><th><?= resendE('Status') ?></th><th><?= resendE('Date') ?></th></tr>
 		<?php foreach($emails as $e): ?>
 		<tr>
 			<td><?= $sanitizer->entities(implode(', ', (array) ($e['to'] ?? []))) ?></td>

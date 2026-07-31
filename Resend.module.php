@@ -62,7 +62,7 @@ class Resend extends WireMail implements Module, ConfigurableModule {
 		return [
 			'title' => 'Resend',
 			'summary' => 'Send email via the Resend API. Full API client: emails, batch, scheduling, domains, contacts, segments, topics, templates, broadcasts, webhooks, logs.',
-			'version' => 100,
+			'version' => 101,
 			'author' => 'Maxim Semenov',
 			'href' => 'https://github.com/mxmsmnv/Resend',
 			'icon' => 'envelope-o',

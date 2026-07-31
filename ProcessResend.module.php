@@ -17,7 +17,7 @@ class ProcessResend extends Process implements Module {
 		return [
 			'title' => 'Resend Admin',
 			'summary' => 'Admin interface for the Resend email platform.',
-			'version' => 100,
+			'version' => 101,
 			'author' => 'Maxim Semenov',
 			'icon' => 'envelope-o',
 			'requires' => ['Resend'],
@@ -1090,7 +1090,7 @@ class ProcessResend extends Process implements Module {
 	 */
 	public function badge($status) {
 		$type = $this->statusType($status);
-		$label = $this->wire()->sanitizer->entities((string) $status);
+		$label = $this->wire()->sanitizer->entities($this->_((string) $status));
 		$class = 'uk-label';
 		if($type === 'success') $class .= ' uk-label-success';
 		elseif($type === 'warning') $class .= ' uk-label-warning';

@@ -14,7 +14,7 @@ $sanitizer = wire()->sanitizer;
 
 <div class="uk-overflow-auto uk-margin-medium-bottom">
 <table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-	<tr><th>Event</th><th>Recipient</th><th>Email ID</th><th>Received</th></tr>
+	<tr><th><?= resendE('Event') ?></th><th><?= resendE('Recipient') ?></th><th><?= resendE('Email ID') ?></th><th><?= resendE('Received') ?></th></tr>
 	<?php foreach($events as $e): ?>
 	<?php
 	$type = (string) ($e['type'] ?? '');
@@ -33,5 +33,5 @@ $sanitizer = wire()->sanitizer;
 
 <?php if($hasMore): ?>
 <?php $last = end($events); ?>
-<p class="uk-margin"><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/?before=<?= (int) $last['id'] ?>">Older events</a></p>
+<p class="uk-margin"><a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>events/?before=<?= (int) $last['id'] ?>"><?= resendE('Older events') ?></a></p>
 <?php endif; ?>

@@ -272,6 +272,10 @@ The admin navigation is grouped by workflow. Top-level groups stay visible, and 
 
 All mutating actions are POST with CSRF validation (`hasValidToken()`).
 
+### Admin Localization
+
+Bundled ProcessWire language CSV files are available in `languages/` for English, French, German and Spanish. Import the matching CSV from ProcessWire's language editor to localize the Resend admin screens and module configuration labels.
+
 ## CLI
 
 `bin/resend` bootstraps ProcessWire (walks up from the script, then from the current working directory, to find `index.php` + `wire/`; the cwd pass covers symlinked module directories; override with the `PW_PATH` environment variable) and dispatches to `Smnv\Resend\Cli`.

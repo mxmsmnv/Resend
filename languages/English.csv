@@ -1,0 +1,324 @@
+en,en,description,file,hash
+Compatibility Alias,Compatibility Alias,,site/modules/Resend/Resend.module.php,49757c5934a9274870c95e02f95f96f3
+API Access,API Access,,site/modules/Resend/Resend.module.php,bbe1851a4bf6476f10ba4c77ec78d11d
+API Key,API Key,,site/modules/Resend/Resend.module.php,d876ff8da67c3731ae25d8335a4168b4
+"A key is configured and stored encrypted in the database. Enter a new key to replace it, or leave blank to keep the current one.","A key is configured and stored encrypted in the database. Enter a new key to replace it, or leave blank to keep the current one.",,site/modules/Resend/Resend.module.php,96b8ea333501912c3c4564d1ef771b36
+Resend API key (re_...). Create one at resend.com/api-keys. Stored encrypted in a dedicated table using the site salt from config.php.,Resend API key (re_...). Create one at resend.com/api-keys. Stored encrypted in a dedicated table using the site salt from config.php.,,site/modules/Resend/Resend.module.php,85852b45b376b870f20cfa01ff6326ae
+Webhook Signing Secret,Webhook Signing Secret,,site/modules/Resend/Resend.module.php,e24f360c740626c09cda9d93678f793e
+"A secret is configured and stored encrypted. Enter a new value to replace it, or leave blank to keep the current one.","A secret is configured and stored encrypted. Enter a new value to replace it, or leave blank to keep the current one.",,site/modules/Resend/Resend.module.php,4ece1868b7d74d346324649bb412fd3a
+"Optional. Webhook signing secret (whsec_...). When set, verifyWebhookSignature() works without passing the secret. Stored encrypted.","Optional. Webhook signing secret (whsec_...). When set, verifyWebhookSignature() works without passing the secret. Stored encrypted.",,site/modules/Resend/Resend.module.php,816dd0148bd5187c0988a317f413cec4
+Sending Defaults,Sending Defaults,,site/modules/Resend/Resend.module.php,6dafae6f3a61fb3eee1c1987764e8fc6
+Default From Email,Default From Email,,site/modules/Resend/Resend.module.php,4657662ce2ee7b611d2a11978262f671
+Must belong to a domain verified in Resend.,Must belong to a domain verified in Resend.,,site/modules/Resend/Resend.module.php,01b2402d6ca3777f0224553f929e1ebd
+Default From Name,Default From Name,,site/modules/Resend/Resend.module.php,9927ba3e55c9bee4ae2e0ff3005fd302
+Default Reply-To Email,Default Reply-To Email,,site/modules/Resend/Resend.module.php,67113d3ec3ae6783d2b1fef8554cf7d5
+Default Topic ID,Default Topic ID,,site/modules/Resend/Resend.module.php,9a4fa4048e14713c6d071cd9b0146737
+Optional. Applied to all sends unless overridden via topicId().,Optional. Applied to all sends unless overridden via topicId().,,site/modules/Resend/Resend.module.php,8a25afe04b312bb19c2aec132022c9a2
+Default Tags,Default Tags,,site/modules/Resend/Resend.module.php,7a97c17951b983f8822e49bd83aaf0d7
+"Optional. name:value pairs, comma separated (ASCII letters, digits, _ and -). Attached to every send; per-send tags with the same name take precedence.","Optional. name:value pairs, comma separated (ASCII letters, digits, _ and -). Attached to every send; per-send tags with the same name take precedence.",,site/modules/Resend/Resend.module.php,4f6acb36bf8999a89d81f793f6d41755
+Delivery Behavior,Delivery Behavior,,site/modules/Resend/Resend.module.php,648da5bd18cfeeb77108fa2634be82fe
+Redirect All Email To (dev),Redirect All Email To (dev),,site/modules/Resend/Resend.module.php,a8a746e31168d622c380f655d91d9c8b
+Development mode: every email is delivered to this address instead of the real recipients; originals are recorded in X-Original-To/Cc/Bcc headers. Leave empty in production.,Development mode: every email is delivered to this address instead of the real recipients; originals are recorded in X-Original-To/Cc/Bcc headers. Leave empty in production.,,site/modules/Resend/Resend.module.php,5199b3d6756691d8bc5a382ddeab1292
+Global BCC,Global BCC,,site/modules/Resend/Resend.module.php,cc54fc49a0e3062c7caac36d4bef1246
+"Optional. Blind copy of every sent email, e.g. for archiving. One or more addresses, comma separated. Not applied while the redirect is active.","Optional. Blind copy of every sent email, e.g. for archiving. One or more addresses, comma separated. Not applied while the redirect is active.",,site/modules/Resend/Resend.module.php,4a436686bf07797896950251913d66c4
+HTTP Retries,HTTP Retries,,site/modules/Resend/Resend.module.php,bffda0f0dc35f6f35c6b376c8ad29dea
+"Automatic retries on rate limiting (429) and network errors, with exponential backoff. 0 disables, maximum 5.","Automatic retries on rate limiting (429) and network errors, with exponential backoff. 0 disables, maximum 5.",,site/modules/Resend/Resend.module.php,812278b7309df0262722943d2b06ea9f
+HTTP Timeout (seconds),HTTP Timeout (seconds),,site/modules/Resend/Resend.module.php,4fa1c6b92594ffbe92c0339fd38f88bc
+Log successful sends,Log successful sends,,site/modules/Resend/Resend.module.php,9d27c16aef28099e4767d0e767608e66
+Disable sending (test mode),Disable sending (test mode),,site/modules/Resend/Resend.module.php,0fef5baf0b660ca4227986609a5aa5b7
+Payloads are logged but not sent.,Payloads are logged but not sent.,,site/modules/Resend/Resend.module.php,5eda22a09577959bf3f007420d169d96
+This screen requires a full access API key. The configured key is restricted to sending emails.,This screen requires a full access API key. The configured key is restricted to sending emails.,,site/modules/Resend/ProcessResend.module.php,f6f560b2171fe92aca9897189d573967
+Resend Dashboard,Resend Dashboard,,site/modules/Resend/ProcessResend.module.php,67373a869ac04096ea7c18803a4a0e48
+API key permission re-checked: full access. All sections unlocked.,API key permission re-checked: full access. All sections unlocked.,,site/modules/Resend/ProcessResend.module.php,45deb957e3b689ae365980f3355e4674
+API key permission re-checked: the key is still sending-only.,API key permission re-checked: the key is still sending-only.,,site/modules/Resend/ProcessResend.module.php,af3198001c11150dd51b9ed73ce6a41e
+Could not determine the key permission (invalid key or network error).,Could not determine the key permission (invalid key or network error).,,site/modules/Resend/ProcessResend.module.php,aa5dacfd51ee13ba6b0f0ae6b9068439
+API key is not configured. Configure the Resend module first.,API key is not configured. Configure the Resend module first.,,site/modules/Resend/ProcessResend.module.php,0e3726b382978813a17de4a86054ae7a
+Sent Emails,Sent Emails,,site/modules/Resend/ProcessResend.module.php,4b00fbff271e325bf356890121378353
+Resend,Resend,,site/modules/Resend/ProcessResend.module.php,1c0b8f236cc7ad13254af9a32ea15be8
+Received Emails,Received Emails,,site/modules/Resend/ProcessResend.module.php,7a347b4e7a0f14ef5d953c902e0f91fd
+Scheduled email cancelled.,Scheduled email cancelled.,,site/modules/Resend/ProcessResend.module.php,849d2775da0f2fabf3060dd1fbe6f582
+Email rescheduled.,Email rescheduled.,,site/modules/Resend/ProcessResend.module.php,9643737236dc834c6dd5f02bb7820d25
+Email,Email,,site/modules/Resend/ProcessResend.module.php,ce8ae9da5b7cd6c3df2929543a9af92d
+"Domain %s created. Add the DNS records, then verify.","Domain %s created. Add the DNS records, then verify.",,site/modules/Resend/ProcessResend.module.php,b769088b900d37ef4f13b8120e7fa113
+Verification triggered.,Verification triggered.,,site/modules/Resend/ProcessResend.module.php,03fef1b3aa2c6aab65098ba8aae63cf7
+Domain deleted.,Domain deleted.,,site/modules/Resend/ProcessResend.module.php,9d6d5573d66a2986f7fc7b25e625fa42
+Tracking settings updated.,Tracking settings updated.,,site/modules/Resend/ProcessResend.module.php,d4ea0f85c6a4d7517b95ede05a4857dc
+Domains,Domains,,site/modules/Resend/ProcessResend.module.php,78cd2c7d5422ffdb6d9545211ca49eeb
+Domain,Domain,,site/modules/Resend/ProcessResend.module.php,eae639a70006feff484a39363c977e24
+Contact created.,Contact created.,,site/modules/Resend/ProcessResend.module.php,ef870566ba0f74a2413c7cc0216f5f96
+Contact deleted.,Contact deleted.,,site/modules/Resend/ProcessResend.module.php,debee498f7598fa7adfcf92d88127d6b
+Contact unsubscribed.,Contact unsubscribed.,,site/modules/Resend/ProcessResend.module.php,8b46b40ba2d47a10c5a3c5e38d2781b5
+Contact resubscribed.,Contact resubscribed.,,site/modules/Resend/ProcessResend.module.php,f77725ded1d1537a1e5d220876828742
+Contacts,Contacts,,site/modules/Resend/ProcessResend.module.php,9aa698f602b1e5694855cee73a683488
+Segment created.,Segment created.,,site/modules/Resend/ProcessResend.module.php,0e25905e0d0ea2c56f6e7fcf0e2e602d
+Segment deleted.,Segment deleted.,,site/modules/Resend/ProcessResend.module.php,2f41fb7953eb0907ec078f8f7febc93b
+Segments,Segments,,site/modules/Resend/ProcessResend.module.php,fb9a488a6fe2d37f9a17651d744997f6
+Contact property created.,Contact property created.,,site/modules/Resend/ProcessResend.module.php,ee7a4c75cb3187054cf72b1b93805f3f
+Contact property deleted.,Contact property deleted.,,site/modules/Resend/ProcessResend.module.php,39ee94c1e4ac329c6cd6a67fb5c7c7a4
+Contact Properties,Contact Properties,,site/modules/Resend/ProcessResend.module.php,3603c77486f0d84839899f55ed26dcd3
+Topic created.,Topic created.,,site/modules/Resend/ProcessResend.module.php,471c09723a0f84e90f2690c9ee9372fc
+Topic deleted.,Topic deleted.,,site/modules/Resend/ProcessResend.module.php,dfd4d6e9531cfac23108c0efb3eea8ac
+Topics,Topics,,site/modules/Resend/ProcessResend.module.php,34ac805c9077c5ca6ae3565dab6ce723
+Template created as a draft. Publish it to make it sendable.,Template created as a draft. Publish it to make it sendable.,,site/modules/Resend/ProcessResend.module.php,eaf3929c8dba6b7f3cdb897650dda716
+Template published.,Template published.,,site/modules/Resend/ProcessResend.module.php,69138ddc6451733ec5cedb04e777326f
+Template duplicated.,Template duplicated.,,site/modules/Resend/ProcessResend.module.php,5c762abb5025ae5ad571b1261d840446
+Template deleted.,Template deleted.,,site/modules/Resend/ProcessResend.module.php,6f5d47da950a4b4e5f17ef0457511f96
+Templates,Templates,,site/modules/Resend/ProcessResend.module.php,7df96b18c230f90ada0a9e2307226338
+Broadcast created as draft.,Broadcast created as draft.,,site/modules/Resend/ProcessResend.module.php,0c90f656f07812c3e636ace5b5a7231a
+Broadcast scheduled.,Broadcast scheduled.,,site/modules/Resend/ProcessResend.module.php,b148255a7f56e6479b70ef845bace7bf
+Broadcast is being sent.,Broadcast is being sent.,,site/modules/Resend/ProcessResend.module.php,2ea72aa1ced35f45cd691eda3f282781
+Broadcast deleted.,Broadcast deleted.,,site/modules/Resend/ProcessResend.module.php,3d71e0058c8c1088a55bfc501bea9954
+Broadcasts,Broadcasts,,site/modules/Resend/ProcessResend.module.php,87d301526459f04001a083b7990410a9
+Broadcast draft updated.,Broadcast draft updated.,,site/modules/Resend/ProcessResend.module.php,f1ffc627a66df84e377033b43351d19d
+Broadcast,Broadcast,,site/modules/Resend/ProcessResend.module.php,be55b6387170df0ca68f41225268e842
+Webhook created.,Webhook created.,,site/modules/Resend/ProcessResend.module.php,d49bb79731786f347f1d831967dafc4b
+Webhook deleted.,Webhook deleted.,,site/modules/Resend/ProcessResend.module.php,2d19252336eb330e800c064d5a1a962b
+Webhook status updated.,Webhook status updated.,,site/modules/Resend/ProcessResend.module.php,e066bc566bb582eb217ceb3dda92c139
+Webhooks,Webhooks,,site/modules/Resend/ProcessResend.module.php,221d2a347ebfc15d48665188f639d1cb
+Webhook Events,Webhook Events,,site/modules/Resend/ProcessResend.module.php,e31ba7daa052860d406c10257d2663d6
+Contact updated.,Contact updated.,,site/modules/Resend/ProcessResend.module.php,1ae13b5ea49b1e79ecdf8d7ae5c9be0c
+Added to segment.,Added to segment.,,site/modules/Resend/ProcessResend.module.php,1d876996d08cf7a8a577969598a0eb58
+Removed from segment.,Removed from segment.,,site/modules/Resend/ProcessResend.module.php,ad783530f27773468c519a4fb6836cee
+Topic subscription updated.,Topic subscription updated.,,site/modules/Resend/ProcessResend.module.php,5b16e16f79cb0fde91c13474e6152041
+Subscription updated.,Subscription updated.,,site/modules/Resend/ProcessResend.module.php,1f17495294ae31fe75b38026b74e1fd2
+Contact,Contact,,site/modules/Resend/ProcessResend.module.php,bbaff12800505b22a853e8b7f4eb6a22
+Template updated. Publish to make the changes sendable.,Template updated. Publish to make the changes sendable.,,site/modules/Resend/ProcessResend.module.php,02c644147cca7bfa6afc71ae7b229ec6
+Template,Template,,site/modules/Resend/ProcessResend.module.php,278c491bdd8a53618c149c4ac790da34
+API Logs,API Logs,,site/modules/Resend/ProcessResend.module.php,9c81ff0916e4cfd2f07b81f313503d2a
+Set a Default From Email in Resend settings before sending a test email.,Set a Default From Email in Resend settings before sending a test email.,,site/modules/Resend/ProcessResend.module.php,6d0a35931c9b6d95ef64d5aea85b46d9
+Test email sent. Resend id: %s,Test email sent. Resend id: %s,,site/modules/Resend/ProcessResend.module.php,b88036a3273333c492683b8b9a39ac86
+Send failed. Check the resend log.,Send failed. Check the resend log.,,site/modules/Resend/ProcessResend.module.php,cfe04f98876570a78a8a4c50413d467c
+Recipient and subject are required.,Recipient and subject are required.,,site/modules/Resend/ProcessResend.module.php,06998f6f1e3f074ca180325a8826b7c0
+Test Send,Test Send,,site/modules/Resend/ProcessResend.module.php,e4476bd625eac215726b1afd9dcff263
+"Edit the draft campaign content, audience and sender before sending or scheduling it.","Edit the draft campaign content, audience and sender before sending or scheduling it.",,site/modules/Resend/ProcessResend.module.php,3a2cb53930c3597db24b831c84dc80ed
+Back to Broadcasts,Back to Broadcasts,,site/modules/Resend/ProcessResend.module.php,fc8f3f7b062a3cab5c5247f51803871c
+Edit Broadcast,Edit Broadcast,,site/modules/Resend/ProcessResend.module.php,4a9ebd8b6cab747973e7ff131a660a8e
+Name,Name,,site/modules/Resend/ProcessResend.module.php,49ee3087348e8d44e1feda1917443987
+Segment,Segment,,site/modules/Resend/ProcessResend.module.php,4b77e2a9d8e9cfc299f504b32d6e3d2b
+From,From,,site/modules/Resend/ProcessResend.module.php,5da618e8e4b89c66fe86e32cdafde142
+Subject,Subject,,site/modules/Resend/ProcessResend.module.php,c7892ebbb139886662c6f2fc8c450710
+HTML Body,HTML Body,,site/modules/Resend/ProcessResend.module.php,3426b0dc32ca04da013bdc8b11fc1ce6
+Save Draft,Save Draft,,site/modules/Resend/ProcessResend.module.php,5778e182c50cbba1d86e14690c8aa35c
+Send,Send,,site/modules/Resend/ProcessResend.module.php,94966d90747b97d1f0f206c98a8b1ac3
+Schedule,Schedule,,site/modules/Resend/ProcessResend.module.php,25f7347236b51a5eae4ba01a7862cb55
+"Leave empty to send immediately, or enter a natural time like","Leave empty to send immediately, or enter a natural time like",,site/modules/Resend/ProcessResend.module.php,fb8d527333e7a89b4b57e416dc051650
+tomorrow 9am,tomorrow 9am,,site/modules/Resend/ProcessResend.module.php,def3d43c6435d9e431e5bd206d7b0050
+Send Broadcast,Send Broadcast,,site/modules/Resend/ProcessResend.module.php,8b6a13d82a742e159e78eda0d9b7b0e0
+"This broadcast is no longer a draft, so send controls may be unavailable.","This broadcast is no longer a draft, so send controls may be unavailable.",,site/modules/Resend/ProcessResend.module.php,fd3598063e09f7a89be94661c9d930ed
+"Create one-off campaigns for a segment, save them as drafts, then edit, send now or schedule for later.","Create one-off campaigns for a segment, save them as drafts, then edit, send now or schedule for later.",,site/modules/Resend/ProcessResend.module.php,08c4737c4e6741707662cf3cfefa3ba8
+Create Broadcast,Create Broadcast,,site/modules/Resend/ProcessResend.module.php,89ce14a40f165c286017517a43404284
+"Start with name, audience, sender and subject. After creation, open the draft to refine the HTML before sending.","Start with name, audience, sender and subject. After creation, open the draft to refine the HTML before sending.",,site/modules/Resend/ProcessResend.module.php,ddac1de8055ee223359cac077725b340
+Create Draft,Create Draft,,site/modules/Resend/ProcessResend.module.php,625d3ee6573976ba5699374e6fc2b4a5
+No Broadcasts Yet,No Broadcasts Yet,,site/modules/Resend/ProcessResend.module.php,2b360f65938df9fe5f582dfdbd035f8c
+Create a draft after you have at least one segment ready. Drafts can be edited before sending.,Create a draft after you have at least one segment ready. Drafts can be edited before sending.,,site/modules/Resend/ProcessResend.module.php,031049b3e65d5a2dbed4a845e26d61d5
+Manage Segments,Manage Segments,,site/modules/Resend/ProcessResend.module.php,ba8b7077142c9ef7b5f88edaf00a39aa
+Status,Status,,site/modules/Resend/ProcessResend.module.php,ec53a8c4f07baed5d8825072c89799be
+Created,Created,,site/modules/Resend/ProcessResend.module.php,0eceeb45861f9585dd7a97a3e36f85c6
+Actions,Actions,,site/modules/Resend/ProcessResend.module.php,06df33001c1d7187fdd81ea1f5b277aa
+Edit,Edit,,site/modules/Resend/ProcessResend.module.php,7dce122004969d56ae2e0245cb754d35
+"Domains control whether Resend can send mail for your site. Add a sending domain or subdomain, publish the DNS records from its detail page, then verify when propagation is ready.","Domains control whether Resend can send mail for your site. Add a sending domain or subdomain, publish the DNS records from its detail page, then verify when propagation is ready.",,site/modules/Resend/ProcessResend.module.php,54b1aae522eef232c63c539246988045
+Setup Status,Setup Status,,site/modules/Resend/ProcessResend.module.php,fd08a2086c2544a236d7bb92cfac1c94
+Current State,Current State,,site/modules/Resend/ProcessResend.module.php,c8c59626a85748cf1d7f517c25e57f01
+No sending domains have been added yet.,No sending domains have been added yet.,,site/modules/Resend/ProcessResend.module.php,1843a5f0dd379d3b1d40d39043262db8
+%d domains still need DNS attention before production sending.,%d domains still need DNS attention before production sending.,,site/modules/Resend/ProcessResend.module.php,f9f9a310b1ae2ecc7c752a7c5022813e
+All listed domains are verified and ready for sending.,All listed domains are verified and ready for sending.,,site/modules/Resend/ProcessResend.module.php,be6ac286c44fb1589e5cfb7ca7e0f7f2
+Next Step,Next Step,,site/modules/Resend/ProcessResend.module.php,2bb4cbbf4c51025867d47131e79ad05f
+"Add a subdomain like mail.example.com, then open it to copy the DNS records.","Add a subdomain like mail.example.com, then open it to copy the DNS records.",,site/modules/Resend/ProcessResend.module.php,056b72a8a062230c8799635c013d2270
+"Open the failed domain, publish the DNS records, then run Verify from the table below.","Open the failed domain, publish the DNS records, then run Verify from the table below.",,site/modules/Resend/ProcessResend.module.php,c7fe5afa0432997ab2e6a7a85a1be4da
+"Send a test email after changing sender defaults, templates or tracking settings.","Send a test email after changing sender defaults, templates or tracking settings.",,site/modules/Resend/ProcessResend.module.php,fcebea4a693651278ec63c1834e6af89
+Add Domain,Add Domain,,site/modules/Resend/ProcessResend.module.php,a9955ce7b15cc87b70d76ad24dd1ef0a
+Region,Region,,site/modules/Resend/ProcessResend.module.php,f447ac856e7e72435904956e3b15f433
+Default (us-east-1),Default (us-east-1),,site/modules/Resend/ProcessResend.module.php,0ce1906fdbe7fb647fcef1718d274b45
+us-east-1,us-east-1,,site/modules/Resend/ProcessResend.module.php,c800b6d9163b0db7d28f86c1470a9542
+eu-west-1,eu-west-1,,site/modules/Resend/ProcessResend.module.php,dfcc3ff446362a7967ef75dd464fbdcf
+sa-east-1,sa-east-1,,site/modules/Resend/ProcessResend.module.php,9e16129fe031b33d73dde83ae920e811
+ap-northeast-1,ap-northeast-1,,site/modules/Resend/ProcessResend.module.php,cab0425f008a6bbe5b809bdf12e1fc8c
+No Domains Yet,No Domains Yet,,site/modules/Resend/ProcessResend.module.php,e4c314cffa73b7a3178da3a2db1e2f20
+"Add a sending domain or subdomain, then open it to copy the DNS records required by Resend.","Add a sending domain or subdomain, then open it to copy the DNS records required by Resend.",,site/modules/Resend/ProcessResend.module.php,a8ab9bd7dced70f25bb0215aef3e8c4f
+Tracking,Tracking,,site/modules/Resend/ProcessResend.module.php,2205dc082ba550b67ad71e3e2241d9a6
+Default,Default,,site/modules/Resend/ProcessResend.module.php,7a1920d61156abc05a60135aefe8bc67
+DNS,DNS,,site/modules/Resend/ProcessResend.module.php,ed5f2bdecbd4bd349d09412d1ff6a6fb
+Sent,Sent,,site/modules/Resend/ProcessResend.module.php,7f8c0283f16925caed8e632086b81b9c
+Received,Received,,site/modules/Resend/ProcessResend.module.php,ac5bb077c33753116b5e91ff1766e7bc
+Status Mix,Status Mix,,site/modules/Resend/ProcessResend.module.php,f2ce08757ca7a22fd8e19753acf64067
+Send Test,Send Test,,site/modules/Resend/ProcessResend.module.php,605b57a901d3e4345cb9ce1f54d43852
+Message,Message,,site/modules/Resend/ProcessResend.module.php,4c2a8fe7eaf24721cc7a9f0175115bd4
+To,To,,site/modules/Resend/ProcessResend.module.php,e12167aa0a7698e6ebc92b4ce3909b53
+Routing,Routing,,site/modules/Resend/ProcessResend.module.php,786c4135070aa1910d2f4ac8b2253235
+Attachments,Attachments,,site/modules/Resend/ProcessResend.module.php,7e2708aeb65763c54052f57ed1a1ec1d
+Date,Date,,site/modules/Resend/ProcessResend.module.php,44749712dbec183e983dcd78a7736c41
+Open,Open,,site/modules/Resend/ProcessResend.module.php,c3bf447eabe632720a3aa1a7ce401274
+Not returned,Not returned,,site/modules/Resend/ProcessResend.module.php,3e449b89b793ab7936650cfe1a45998f
+None,None,,site/modules/Resend/ProcessResend.module.php,6adf97f83acf6453d4a6a4b1070f3754
+View,View,,site/modules/Resend/ProcessResend.module.php,4351cfebe4b61d8aa5efa1d020710005
+Recipient,Recipient,,site/modules/Resend/ProcessResend.module.php,5d6103b662f41b07e10687f03aca8fdc
+Sender,Sender,,site/modules/Resend/ProcessResend.module.php,8aace3ec18d83874d22850b7eee93c7d
+"Contact properties define reusable fields for templates and audience personalization. The property key becomes the template variable name, while fallback values keep templates readable when a contact has no value set.","Contact properties define reusable fields for templates and audience personalization. The property key becomes the template variable name, while fallback values keep templates readable when a contact has no value set.",,site/modules/Resend/ProcessResend.module.php,dc88c06b728417611992b1d69609023d
+Create Property,Create Property,,site/modules/Resend/ProcessResend.module.php,165dce0eb8f8944d4dbda0a829aad871
+Key,Key,,site/modules/Resend/ProcessResend.module.php,897356954c2cd3d41b221e3f24f99bba
+Type,Type,,site/modules/Resend/ProcessResend.module.php,a1fa27779242b4902f7ae3bdd5c6d508
+Fallback Value,Fallback Value,,site/modules/Resend/ProcessResend.module.php,bcb5b256142824b7a294c32449bbecbb
+Type Guide,Type Guide,,site/modules/Resend/ProcessResend.module.php,95db68620b1e225054f5c11c55bccc76
+String,String,,site/modules/Resend/ProcessResend.module.php,27118326006d3829667a400ad23d5d98
+"Names, plans, cities and labels.","Names, plans, cities and labels.",,site/modules/Resend/ProcessResend.module.php,2529215f015c9092120ebff4c633f15f
+Number,Number,,site/modules/Resend/ProcessResend.module.php,b2ee912b91d69b435159c7c3f6df7f5f
+"Counts, scores or numeric tiers.","Counts, scores or numeric tiers.",,site/modules/Resend/ProcessResend.module.php,a6ff57423d76ae50e060ce244910bfe1
+Boolean,Boolean,,site/modules/Resend/ProcessResend.module.php,27226c864bac7454a8504f8edb15d95b
+Feature flags and yes/no states.,Feature flags and yes/no states.,,site/modules/Resend/ProcessResend.module.php,7602ef42d08d2106f9c5c9c6f8c44552
+"Renewals, bookings and lifecycle dates.","Renewals, bookings and lifecycle dates.",,site/modules/Resend/ProcessResend.module.php,df596647425e1d4e2680e2755fc62a28
+No Contact Properties Yet,No Contact Properties Yet,,site/modules/Resend/ProcessResend.module.php,b229f4e4cf5ecbf0b3e65acdb16bbad1
+"Create fields before using them in templates. Start with values you personalize often, such as plan, city or booking dates.","Create fields before using them in templates. Start with values you personalize often, such as plan, city or booking dates.",,site/modules/Resend/ProcessResend.module.php,ccee5fec7e2e35ada3580d1d7d6f2e5b
+Open Templates,Open Templates,,site/modules/Resend/ProcessResend.module.php,6b8ba4e8f9b8313714897a5740905748
+Type Mix,Type Mix,,site/modules/Resend/ProcessResend.module.php,cd9189f04e1e870f1f850af91f287198
+Property,Property,,site/modules/Resend/ProcessResend.module.php,5ad234cb2cde4266195252a23ca7d84e
+Fallback,Fallback,,site/modules/Resend/ProcessResend.module.php,882277bdf25efaeb8295e842ebcb3d11
+Template Variable,Template Variable,,site/modules/Resend/ProcessResend.module.php,d17c7fd7e816c44f34e2dc119b6ec346
+ID,ID,,site/modules/Resend/ProcessResend.module.php,b718adec73e04ce3ec720dd11a06a308
+"A contact profile combines identity, global subscription state, segment membership, topic preferences and custom properties.","A contact profile combines identity, global subscription state, segment membership, topic preferences and custom properties.",,site/modules/Resend/ProcessResend.module.php,f2b8ffef1885ab9748939cb8c4a20f16
+Back to Contacts,Back to Contacts,,site/modules/Resend/ProcessResend.module.php,9939f8269a2fb7cfd15db2c33cfed279
+Identity,Identity,,site/modules/Resend/ProcessResend.module.php,c9c5c65fb4af9cf90eb99b3b84424189
+First Name,First Name,,site/modules/Resend/ProcessResend.module.php,bc910f8bdf70f29374f496f05be0330c
+Last Name,Last Name,,site/modules/Resend/ProcessResend.module.php,77587239bf4c54ea493c7033e1dbf636
+Save Identity,Save Identity,,site/modules/Resend/ProcessResend.module.php,812f989e0ea8f8ac61cc4b95e7709aec
+Subscription,Subscription,,site/modules/Resend/ProcessResend.module.php,787ad0b7a17de4ad6b1711bbf8d79fcb
+Add to Segment,Add to Segment,,site/modules/Resend/ProcessResend.module.php,6590f540c2a4346d9a742205ef418a70
+Add,Add,,site/modules/Resend/ProcessResend.module.php,ec211f7c20af43e742bf2570c3cb84f9
+This contact already belongs to every available segment.,This contact already belongs to every available segment.,,site/modules/Resend/ProcessResend.module.php,d66c7a6805d2a0c05a8d4403471d7530
+Topic Subscriptions,Topic Subscriptions,,site/modules/Resend/ProcessResend.module.php,d70a4c29b1c808e91a1cadfbece34cde
+Topic,Topic,,site/modules/Resend/ProcessResend.module.php,25812bf456959aa5f28dc570f341a3ba
+Properties,Properties,,site/modules/Resend/ProcessResend.module.php,9fc2d28c05ed9eb1d75ba4465abf15a9
+Method,Method,,site/modules/Resend/ProcessResend.module.php,4c3880bb027f159e801041b1021e88e8
+Path,Path,,site/modules/Resend/ProcessResend.module.php,ac70412e939d72a9234cdebb1af5867b
+Edit Template,Edit Template,,site/modules/Resend/ProcessResend.module.php,e838b63505c498050eccbcd6090a8262
+Alias,Alias,,site/modules/Resend/ProcessResend.module.php,effdb9ce6c5d44df31b89d7069c8e0fb
+Save,Save,,site/modules/Resend/ProcessResend.module.php,c9cc8cce247e49bae79f15173ce97354
+"Contacts make up the audience used by broadcasts, segments and topic subscriptions. Filter by segment, add a person, or open a profile to manage membership and subscription state.","Contacts make up the audience used by broadcasts, segments and topic subscriptions. Filter by segment, add a person, or open a profile to manage membership and subscription state.",,site/modules/Resend/ProcessResend.module.php,78083d1da53ff28c6f624f1d24ca798d
+This Page,This Page,,site/modules/Resend/ProcessResend.module.php,42e9d51e56141020837a7c7e4668e09c
+Active,Active,,site/modules/Resend/ProcessResend.module.php,4d3d769b812b6faa6b76e1a8abaece2d
+Available for broadcasts.,Available for broadcasts.,,site/modules/Resend/ProcessResend.module.php,6ea60af948e6fab4f4f2ea9c5f3f3ba9
+Unsubscribed,Unsubscribed,,site/modules/Resend/ProcessResend.module.php,fdc7aa92ecb714c25019e988c09aeffa
+Excluded from broadcasts.,Excluded from broadcasts.,,site/modules/Resend/ProcessResend.module.php,164c4267d5041227f662ed075f99b21c
+Named,Named,,site/modules/Resend/ProcessResend.module.php,02a7d85bf0d59dff6a850fb5d7dbbe01
+Have first or last name.,Have first or last name.,,site/modules/Resend/ProcessResend.module.php,a989ea489613a861bcf6315042fb4a0f
+All contacts,All contacts,,site/modules/Resend/ProcessResend.module.php,2e449cbe7a5979b8213782c69045a2e1
+Clear Filter,Clear Filter,,site/modules/Resend/ProcessResend.module.php,1fa2cbf3189a9841c5dc2e3414e8152f
+Choose a segment to focus this page on one audience.,Choose a segment to focus this page on one audience.,,site/modules/Resend/ProcessResend.module.php,86e4114a4de7d77538d3a79ef29cfa0f
+Add Contact,Add Contact,,site/modules/Resend/ProcessResend.module.php,4e58c159d031b956f9ee227f87df3fcf
+No Contacts Found,No Contacts Found,,site/modules/Resend/ProcessResend.module.php,890b5b73128d9345da724dea4ae2eb9e
+No name,No name,,site/modules/Resend/ProcessResend.module.php,2a9630ec3561784ad06cf00a2825e086
+Profile,Profile,,site/modules/Resend/ProcessResend.module.php,cce99c598cfdb9773ab041d54c3d973a
+"Segments are named audiences for contacts and broadcasts. Create operational groups, then open a segment to review and manage its members from the Contacts screen.","Segments are named audiences for contacts and broadcasts. Create operational groups, then open a segment to review and manage its members from the Contacts screen.",,site/modules/Resend/ProcessResend.module.php,4493d380f1575104970e7b2c8d4a559d
+Create Segment,Create Segment,,site/modules/Resend/ProcessResend.module.php,88d606fb374499e66fc782bda05b16f0
+Audience Workflow,Audience Workflow,,site/modules/Resend/ProcessResend.module.php,6df44b746c06f8c75cde07bf0f69da4f
+1. Create,1. Create,,site/modules/Resend/ProcessResend.module.php,0b77088d49d0e77e98bf5c8fc7d7c1fe
+Add a segment for each audience you plan to target.,Add a segment for each audience you plan to target.,,site/modules/Resend/ProcessResend.module.php,88c103e132b5b1e274a6c72cda2bd87b
+2. Populate,2. Populate,,site/modules/Resend/ProcessResend.module.php,dd461b3594e608625dcc180b27c5d0ac
+Open the segment in Contacts and add or import members.,Open the segment in Contacts and add or import members.,,site/modules/Resend/ProcessResend.module.php,c4305eecfdecb706b5004705267db8e3
+3. Send,3. Send,,site/modules/Resend/ProcessResend.module.php,37fdf37a063214ff6e4074a49c3f7c75
+Choose the segment when drafting a broadcast.,Choose the segment when drafting a broadcast.,,site/modules/Resend/ProcessResend.module.php,c481334d69d3f2103ca6c9531d70272b
+No Segments Yet,No Segments Yet,,site/modules/Resend/ProcessResend.module.php,20429a2cb8aa26f531d1759dea4cc4f3
+Create a segment before drafting a broadcast audience. Contacts can be added to one or more segments later.,Create a segment before drafting a broadcast audience. Contacts can be added to one or more segments later.,,site/modules/Resend/ProcessResend.module.php,a5481991fb97918db20378b314976ea5
+Open Contacts,Open Contacts,,site/modules/Resend/ProcessResend.module.php,900699f0030e4f3880ab57e101c059b9
+Use,Use,,site/modules/Resend/ProcessResend.module.php,ad8783089f828b927473fb61d51940ec
+Browse members in Contacts,Browse members in Contacts,,site/modules/Resend/ProcessResend.module.php,6806d3c357386dcd2463ecf5fba2ec25
+Requires a full access API key,Requires a full access API key,,site/modules/Resend/ProcessResend.module.php,4caa6cf47e269065b9c4f5e55629f090
+Resend settings,Resend settings,,site/modules/Resend/ProcessResend.module.php,3a998a46f23bfb08910290e9984a822c
+Next page,Next page,,site/modules/Resend/ProcessResend.module.php,374bea6cf8bd1e8fd64570b629cc6562
+"Use this page while setting up or auditing a sending domain. Publish the DNS records exactly as shown, then verify after DNS propagation has had time to complete.","Use this page while setting up or auditing a sending domain. Publish the DNS records exactly as shown, then verify after DNS propagation has had time to complete.",,site/modules/Resend/ProcessResend.module.php,3d9c9eacb10e44c27ebde2cc06494d2e
+Back to Domains,Back to Domains,,site/modules/Resend/ProcessResend.module.php,2dd310758e6be1d5c3db63bfee4826af
+Open tracking,Open tracking,,site/modules/Resend/ProcessResend.module.php,dc3f80504f3f7b7d04f28aef8875ce7c
+Click tracking,Click tracking,,site/modules/Resend/ProcessResend.module.php,066cd22ee88d08e94741234969196039
+Save Tracking,Save Tracking,,site/modules/Resend/ProcessResend.module.php,58e461379dfe10c5b216c4b9532cb1fc
+"This domain is verified. Use Test Send when changing sender defaults, templates or routing.","This domain is verified. Use Test Send when changing sender defaults, templates or routing.",,site/modules/Resend/ProcessResend.module.php,f8b1f250015223dfeb456b71aa296ea8
+"Publish every DNS record below at your DNS provider, wait for propagation, then trigger verification from the Domains list.","Publish every DNS record below at your DNS provider, wait for propagation, then trigger verification from the Domains list.",,site/modules/Resend/ProcessResend.module.php,b8d619eb4fb8b38c4f991f39c180c9b6
+Verify from Domains,Verify from Domains,,site/modules/Resend/ProcessResend.module.php,21d6e4f72dae1fd0745b1dd3bd395907
+Resend did not return DNS records for this domain. Refresh the domain from Resend or check whether creation completed successfully.,Resend did not return DNS records for this domain. Refresh the domain from Resend or check whether creation completed successfully.,,site/modules/Resend/ProcessResend.module.php,68d5bba4cd2f5f399984ac20dae71ef9
+DNS Assistant,DNS Assistant,,site/modules/Resend/ProcessResend.module.php,819aad003f18b0df27a257d6f26da519
+This checks the public DNS that is visible right now and explains the safest next step.,This checks the public DNS that is visible right now and explains the safest next step.,,site/modules/Resend/ProcessResend.module.php,3aad4121474e5777284ae05d6bc7dc05
+"If SPF already exists, do not add a second SPF TXT record. Use the combined value shown here.","If SPF already exists, do not add a second SPF TXT record. Use the combined value shown here.",,site/modules/Resend/ProcessResend.module.php,e9727ab42c665b997b7bbfa361ff88d9
+DNS lookup is not available on this server.,DNS lookup is not available on this server.,,site/modules/Resend/ProcessResend.module.php,6f3560bad33f95f74bcab036636da911
+Use this SPF value:,Use this SPF value:,,site/modules/Resend/ProcessResend.module.php,7880c4ef429e820f756c61513d84b2cc
+Required value:,Required value:,,site/modules/Resend/ProcessResend.module.php,d75c34e566fa30eaee941227c02d8ca2
+DNS Records,DNS Records,,site/modules/Resend/ProcessResend.module.php,5236e078cc870c30c6522d2401970ea7
+Value,Value,,site/modules/Resend/ProcessResend.module.php,689202409e48743b914713f96d93947c
+Priority,Priority,,site/modules/Resend/ProcessResend.module.php,502996d9790340c5fd7b86a5b93b1c9f
+TTL,TTL,,site/modules/Resend/ProcessResend.module.php,433a6d1dc9f59395173b9c44da198568
+No DNS Records Returned,No DNS Records Returned,,site/modules/Resend/ProcessResend.module.php,0edd6d4e58d45ba74455e64fa88d7865
+Resend did not include DNS records for this domain response.,Resend did not include DNS records for this domain response.,,site/modules/Resend/ProcessResend.module.php,5595a69ccd466fd040b92d55160e953a
+"Send Resend activity to another system when it needs to react to deliveries, engagement, inbound mail, contact changes or domain updates.","Send Resend activity to another system when it needs to react to deliveries, engagement, inbound mail, contact changes or domain updates.",,site/modules/Resend/ProcessResend.module.php,2a5b9bed30b6e6d6bb095756e7a31013
+Received Events,Received Events,,site/modules/Resend/ProcessResend.module.php,cad4750c0f658e06eff3d46af9c019f9
+Create Webhook,Create Webhook,,site/modules/Resend/ProcessResend.module.php,d413f5969f767c221504812a9c5ff3b1
+"Add the HTTPS endpoint that should receive Resend updates. After creation, copy the signing secret immediately and store it with that endpoint.","Add the HTTPS endpoint that should receive Resend updates. After creation, copy the signing secret immediately and store it with that endpoint.",,site/modules/Resend/ProcessResend.module.php,e5be2b4db7d0f66558d44468f66f4831
+Choose only the signals your endpoint actually handles.,Choose only the signals your endpoint actually handles.,,site/modules/Resend/ProcessResend.module.php,16a01cc940945478e20fbf549a7492a0
+Destination URL,Destination URL,,site/modules/Resend/ProcessResend.module.php,dfa46f92ff8959358cbc91099bb78141
+Send These Updates,Send These Updates,,site/modules/Resend/ProcessResend.module.php,f1522be6809a828e70f94d11618676c6
+No Webhooks Yet,No Webhooks Yet,,site/modules/Resend/ProcessResend.module.php,3cc8acb1d173da2a2a385580def68eb3
+"Create one when another system needs to receive delivery updates, inbound mail, contact changes or domain status changes.","Create one when another system needs to receive delivery updates, inbound mail, contact changes or domain status changes.",,site/modules/Resend/ProcessResend.module.php,315d6cd48cc57f2a6673300f97719e01
+View Received Events,View Received Events,,site/modules/Resend/ProcessResend.module.php,c5c1bcd4f31e74965664030f52b20f89
+Destination,Destination,,site/modules/Resend/ProcessResend.module.php,12007e1d59f4d09c87dbe2c438256244
+Updates Sent,Updates Sent,,site/modules/Resend/ProcessResend.module.php,8ff5af641279cb402cd187a983275ce8
+"Send a safe simulator email after changing settings, sender defaults, retry behavior or template code. Simulator recipients generate known outcomes without contacting a real person.","Send a safe simulator email after changing settings, sender defaults, retry behavior or template code. Simulator recipients generate known outcomes without contacting a real person.",,site/modules/Resend/ProcessResend.module.php,cdf87215d5a77c152db8f269f97c80a3
+View Sent Emails,View Sent Emails,,site/modules/Resend/ProcessResend.module.php,6a0b99e693a12f0fc74f3b7a0a770036
+Default From Email Required,Default From Email Required,,site/modules/Resend/ProcessResend.module.php,885d43f1acea3490ef34213aa7777f21
+Set,Set,,site/modules/Resend/ProcessResend.module.php,5d5b78699e57104f2fa03bbdf7b9197b
+"in Resend settings first, using an address on a verified Resend domain.","in Resend settings first, using an address on a verified Resend domain.",,site/modules/Resend/ProcessResend.module.php,df7e35abb5b6224da191351eebf9e18d
+Open Settings,Open Settings,,site/modules/Resend/ProcessResend.module.php,638c05f4f159a403e04aebe94b46a2a8
+Send a Test Email,Send a Test Email,,site/modules/Resend/ProcessResend.module.php,58e9e8f131e86a10bea2bc1f0546a814
+Select the delivery result you want to simulate. The safe resend.dev recipient is filled in automatically.,Select the delivery result you want to simulate. The safe resend.dev recipient is filled in automatically.,,site/modules/Resend/ProcessResend.module.php,84498b250cae1796debd771fde543917
+Recipient:,Recipient:,,site/modules/Resend/ProcessResend.module.php,3841356b3344dcaf14dbccbe6e2b6fae
+Set Default From,Set Default From,,site/modules/Resend/ProcessResend.module.php,bbbe612438dabef90caab6ff9aad2a75
+"Create reusable email bodies, save drafts, then publish the version that should be used by template sends.","Create reusable email bodies, save drafts, then publish the version that should be used by template sends.",,site/modules/Resend/ProcessResend.module.php,f72cceb10f25458f5003fce3ca39b10e
+Create Template,Create Template,,site/modules/Resend/ProcessResend.module.php,493e63d72cf0760c1a67f05f1ad9bfe9
+Start a reusable draft with metadata and HTML. Open it after creation to keep editing and publish when ready.,Start a reusable draft with metadata and HTML. Open it after creation to keep editing and publish when ready.,,site/modules/Resend/ProcessResend.module.php,31511c9ef4cd89a9d3a9d38eea58c547
+No Templates Yet,No Templates Yet,,site/modules/Resend/ProcessResend.module.php,28cf71d2317f9a221e799c16aba8386d
+Create a draft and publish it before using template sends.,Create a draft and publish it before using template sends.,,site/modules/Resend/ProcessResend.module.php,ec97b9346ebede3a505eb20d5b7d2808
+Updated,Updated,,site/modules/Resend/ProcessResend.module.php,ff0a3b7f3daef040faf89a88fdac01b7
+Create Topic,Create Topic,,site/modules/Resend/ProcessResend.module.php,892faf0d06daa5fd0c9cc084f306fe53
+Description,Description,,site/modules/Resend/ProcessResend.module.php,b5a7adde1af5c87d7fd797b6245c2a39
+Default Subscription,Default Subscription,,site/modules/Resend/ProcessResend.module.php,8ec013b18bfe9ce6918e24c69a7c64ed
+opt-in,opt-in,,site/modules/Resend/ProcessResend.module.php,bf4eb826a214dc935177144ab6202809
+opt-out,opt-out,,site/modules/Resend/ProcessResend.module.php,480e7f6686e441e75e00bb2de2fe04f1
+Create,Create,,site/modules/Resend/ProcessResend.module.php,686e697538050e4664636337cc3b834f
+Event,Event,,site/modules/Resend/ProcessResend.module.php,a4ecfc70574394990cf17bd83df499f7
+Email ID,Email ID,,site/modules/Resend/ProcessResend.module.php,22a10b7daf28704df33ce0f43aff0139
+Older events,Older events,,site/modules/Resend/ProcessResend.module.php,a919a4230851dabfdc608abef23f7341
+No recent email statuses are available yet.,No recent email statuses are available yet.,,site/modules/Resend/ProcessResend.module.php,1ceb15a8104ff6cb5f34cd98e0165350
+"Start here when checking the integration. The dashboard highlights readiness, recent delivery behavior and the next operational actions to check before sending.","Start here when checking the integration. The dashboard highlights readiness, recent delivery behavior and the next operational actions to check before sending.",,site/modules/Resend/ProcessResend.module.php,474f535856c84aec1b5a4ed1721e6bf8
+Manage Domains,Manage Domains,,site/modules/Resend/ProcessResend.module.php,b815b4fd28349c372a8f409de9e72201
+View Emails,View Emails,,site/modules/Resend/ProcessResend.module.php,bcf24d233ee3b111ea1cb0bad67dc273
+Configuration Required,Configuration Required,,site/modules/Resend/ProcessResend.module.php,b269d20c229a7467ef26adaac06a886a
+Configure the,Configure the,,site/modules/Resend/ProcessResend.module.php,5c820c91ffa6482a0cbf41c8d64a17ae
+Resend module,Resend module,,site/modules/Resend/ProcessResend.module.php,9da7410d95ae304f57ee03db8aa5c91b
+"with your Resend API key, default sender and delivery options to get started.","with your Resend API key, default sender and delivery options to get started.",,site/modules/Resend/ProcessResend.module.php,b44d3677a08c1916176025b96c6913f8
+Sending-Only API Key,Sending-Only API Key,,site/modules/Resend/ProcessResend.module.php,419d3c0c16562f04f25834fa61140b7c
+The configured API key is restricted to sending emails. WireMail sending and the,The configured API key is restricted to sending emails. WireMail sending and the,,site/modules/Resend/ProcessResend.module.php,9029fc037698872c79884044d6bd8b2f
+"screen work; management sections (emails, domains, contacts, broadcasts, ...) are unavailable and locked in the navigation above.","screen work; management sections (emails, domains, contacts, broadcasts, ...) are unavailable and locked in the navigation above.",,site/modules/Resend/ProcessResend.module.php,48bb482463c1cbd0699249223dc44373
+"To unlock them, create a key with","To unlock them, create a key with",,site/modules/Resend/ProcessResend.module.php,54cf04564936c24c8a08459aac1153be
+Full access,Full access,,site/modules/Resend/ProcessResend.module.php,22bb71f5bb6dc726ce615387711955e1
+permission at resend.com/api-keys and update it in the,permission at resend.com/api-keys and update it in the,,site/modules/Resend/ProcessResend.module.php,d4dc8b5c4ce2e46e0b0ce09975e4bb91
+module configuration,module configuration,,site/modules/Resend/ProcessResend.module.php,f08bfd4812a7692864a1f8e3a921d01a
+Sending Activity,Sending Activity,,site/modules/Resend/ProcessResend.module.php,21d4d30dce88ab0e6e0eea6eaa7331c6
+Last 14 days,Last 14 days,,site/modules/Resend/ProcessResend.module.php,beab46acafe3d5f8a2968836494e3eec
+Status Breakdown,Status Breakdown,,site/modules/Resend/ProcessResend.module.php,06e071531bb216549846937c1cfc903e
+Next Actions,Next Actions,,site/modules/Resend/ProcessResend.module.php,ddf815ccce15bdffcb429f76da3d4349
+Recommended next step for this workspace.,Recommended next step for this workspace.,,site/modules/Resend/ProcessResend.module.php,f80525c397b5ea53b48576b002ed4b03
+Domain Mix,Domain Mix,,site/modules/Resend/ProcessResend.module.php,f342c085ecffb75a734a499b27b0e524
+No domains. Add and verify a domain before production sending.,No domains. Add and verify a domain before production sending.,,site/modules/Resend/ProcessResend.module.php,c4f1ca72bea5bb71fea085a7d19d8034
+Delivery Signals,Delivery Signals,,site/modules/Resend/ProcessResend.module.php,e21723df247abe3ba720e8048ca07533
+Delivered,Delivered,,site/modules/Resend/ProcessResend.module.php,67edd3b99247c9eb5884a02802a20fa7
+Opened,Opened,,site/modules/Resend/ProcessResend.module.php,1a11b1adc359c03db0ca798a00e2632c
+Clicked,Clicked,,site/modules/Resend/ProcessResend.module.php,aac77152dd6ab723d807092db6e0daf4
+Bounced or Complained,Bounced or Complained,,site/modules/Resend/ProcessResend.module.php,478e25b9a5daf5fbb9eaa409a1dc6166
+Recent Emails,Recent Emails,,site/modules/Resend/ProcessResend.module.php,2eee5acee936e467af85727000a3c612
+Bounced/Complained,Bounced/Complained,,site/modules/Resend/ProcessResend.module.php,1ceb324807fb4d236bd25040ac26cd35
+Cc,Cc,,site/modules/Resend/ProcessResend.module.php,e4c8f1de1c0855c7c2be33196d3c3537
+Bcc,Bcc,,site/modules/Resend/ProcessResend.module.php,165e7ce57962f7d8e6831ee7a7eed5bb
+Reply-To,Reply-To,,site/modules/Resend/ProcessResend.module.php,a7873fa30fd3bed5c2694065e4e2a460
+Scheduled At,Scheduled At,,site/modules/Resend/ProcessResend.module.php,6ed308034efda0c8c7dc3432e13d2e6b
+Scheduled Email,Scheduled Email,,site/modules/Resend/ProcessResend.module.php,1ff83fc41a25a8de75c3093a10215984
+Reschedule (natural language or ISO 8601),Reschedule (natural language or ISO 8601),,site/modules/Resend/ProcessResend.module.php,98c25bbb2e1cf8d1e0605a9bdb1454cd
+Reschedule,Reschedule,,site/modules/Resend/ProcessResend.module.php,4d71f6e4d505e2025e99a24491603763
+Filename,Filename,,site/modules/Resend/ProcessResend.module.php,1351017ac6423911223bc19a8cb7c653
+Content Type,Content Type,,site/modules/Resend/ProcessResend.module.php,2effa58f13159d138a634233e246713d
+HTML Preview,HTML Preview,,site/modules/Resend/ProcessResend.module.php,93c7f1af5d82913a01713c567f22c539
+Text,Text,,site/modules/Resend/ProcessResend.module.php,9dffbf69ffba8bc38bc4e01abf4b1675

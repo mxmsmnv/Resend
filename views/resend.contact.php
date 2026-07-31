@@ -23,10 +23,10 @@ foreach($topics as $t) if(($t['subscription'] ?? '') === 'opt-in') $topicOptIn++
 
 <div class="uk-grid-small uk-flex-bottom uk-margin-medium-bottom" uk-grid>
 	<div class="uk-width-expand@m">
-		<p class="uk-text-muted uk-margin-remove">A contact profile combines identity, global subscription state, segment membership, topic preferences and custom properties.</p>
+		<p class="uk-text-muted uk-margin-remove"><?= resendE('A contact profile combines identity, global subscription state, segment membership, topic preferences and custom properties.') ?></p>
 	</div>
 	<div class="uk-width-auto@m">
-		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>contacts/">Back to Contacts</a>
+		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>contacts/"><?= resendE('Back to Contacts') ?></a>
 	</div>
 </div>
 
@@ -40,20 +40,20 @@ foreach($topics as $t) if(($t['subscription'] ?? '') === 'opt-in') $topicOptIn++
 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom">
 	<div class="uk-grid-medium uk-grid-divider" uk-grid>
 		<div class="uk-width-1-2@m">
-			<h3 class="uk-margin-remove-top">Identity</h3>
+			<h3 class="uk-margin-remove-top"><?= resendE('Identity') ?></h3>
 			<form class="uk-form-stacked" method="post" action="<?= $actionUrl ?>">
 				<?= resendCsrf($csrf) ?>
 				<input type="hidden" name="action" value="update">
 				<div class="uk-grid-small uk-flex-bottom" uk-grid>
-					<div class="uk-width-1-2@m"><label class="uk-form-label">First Name</label><input class="uk-input" type="text" name="first_name" value="<?= $sanitizer->entities($contact['first_name'] ?? '') ?>"></div>
-					<div class="uk-width-1-2@m"><label class="uk-form-label">Last Name</label><input class="uk-input" type="text" name="last_name" value="<?= $sanitizer->entities($contact['last_name'] ?? '') ?>"></div>
-					<div class="uk-width-auto@m"><button type="submit" class="uk-button uk-button-primary">Save Identity</button></div>
+					<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('First Name') ?></label><input class="uk-input" type="text" name="first_name" value="<?= $sanitizer->entities($contact['first_name'] ?? '') ?>"></div>
+					<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('Last Name') ?></label><input class="uk-input" type="text" name="last_name" value="<?= $sanitizer->entities($contact['last_name'] ?? '') ?>"></div>
+					<div class="uk-width-auto@m"><button type="submit" class="uk-button uk-button-primary"><?= resendE('Save Identity') ?></button></div>
 				</div>
 			</form>
 			<p class="uk-text-meta">Created <?= $process->formatDate($contact['created_at'] ?? '') ?><?= strlen($name) ? ', shown as ' . $sanitizer->entities($name) : '' ?>.</p>
 		</div>
 		<div class="uk-width-1-2@m">
-			<h3 class="uk-margin-remove-top">Subscription</h3>
+			<h3 class="uk-margin-remove-top"><?= resendE('Subscription') ?></h3>
 			<p><?= $unsub ? 'This contact is globally unsubscribed and will be skipped by broadcasts.' : 'This contact is globally active. Topic preferences can still opt them out of individual streams.' ?></p>
 			<p class="uk-margin-remove-bottom">
 				<?php if($unsub): ?>
@@ -68,10 +68,10 @@ foreach($topics as $t) if(($t['subscription'] ?? '') === 'opt-in') $topicOptIn++
 
 <div class="uk-grid-small uk-margin-medium-bottom" uk-grid="match: > div > .uk-card">
 	<div class="uk-width-2-3@l">
-		<h2>Segments</h2>
+		<h2><?= resendE('Segments') ?></h2>
 		<div class="uk-overflow-auto">
 		<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-			<tr><th>Name</th><th>ID</th><th>Actions</th></tr>
+			<tr><th><?= resendE('Name') ?></th><th><?= resendE('ID') ?></th><th><?= resendE('Actions') ?></th></tr>
 			<?php foreach($memberSegments as $s): ?>
 			<tr>
 				<td><?= $sanitizer->entities($s['name'] ?? '') ?></td>
@@ -85,31 +85,31 @@ foreach($topics as $t) if(($t['subscription'] ?? '') === 'opt-in') $topicOptIn++
 	</div>
 	<div class="uk-width-1-3@l">
 		<div class="uk-card uk-card-default uk-card-body uk-card-small uk-height-1-1">
-			<h3>Add to Segment</h3>
+			<h3><?= resendE('Add to Segment') ?></h3>
 			<?php if(count($available)): ?>
 			<form class="uk-form-stacked" method="post" action="<?= $actionUrl ?>">
 				<?= resendCsrf($csrf) ?>
 				<input type="hidden" name="action" value="addsegment">
-				<label class="uk-form-label">Segment</label>
+				<label class="uk-form-label"><?= resendE('Segment') ?></label>
 				<select class="uk-select" name="segment_id">
 					<?php foreach($available as $s): ?>
 					<option value="<?= $sanitizer->entities($s['id']) ?>"><?= $sanitizer->entities($s['name'] ?? '') ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="uk-margin-small-top uk-margin-remove-bottom"><button type="submit" class="uk-button uk-button-primary">Add</button></p>
+				<p class="uk-margin-small-top uk-margin-remove-bottom"><button type="submit" class="uk-button uk-button-primary"><?= resendE('Add') ?></button></p>
 			</form>
 			<?php else: ?>
-				<p class="uk-text-muted uk-margin-remove-bottom">This contact already belongs to every available segment.</p>
+				<p class="uk-text-muted uk-margin-remove-bottom"><?= resendE('This contact already belongs to every available segment.') ?></p>
 			<?php endif; ?>
 			<?= resendNote("Segment membership controls which broadcast audiences include this contact.") ?>
 		</div>
 	</div>
 </div>
 
-<h2>Topic Subscriptions</h2>
+<h2><?= resendE('Topic Subscriptions') ?></h2>
 <div class="uk-overflow-auto uk-margin-medium-bottom">
 <table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-	<tr><th>Topic</th><th>Subscription</th><th>Actions</th></tr>
+	<tr><th><?= resendE('Topic') ?></th><th><?= resendE('Subscription') ?></th><th><?= resendE('Actions') ?></th></tr>
 	<?php foreach($topics as $t): ?>
 	<?php $optedIn = ($t['subscription'] ?? '') === 'opt-in'; ?>
 	<tr>
@@ -130,7 +130,7 @@ foreach($topics as $t) if(($t['subscription'] ?? '') === 'opt-in') $topicOptIn++
 </div>
 
 <?php if(count($properties)): ?>
-<h2>Properties</h2>
+<h2><?= resendE('Properties') ?></h2>
 <div class="uk-card uk-card-default uk-card-body uk-margin-medium-bottom">
 	<dl class="uk-description-list uk-description-list-divider uk-margin-remove-bottom">
 		<?php foreach($properties as $key => $value): ?>

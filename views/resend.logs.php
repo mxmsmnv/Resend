@@ -8,7 +8,7 @@ $sanitizer = wire()->sanitizer;
 
 <div class="uk-overflow-auto uk-margin-medium-bottom">
 <table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-	<tr><th>Method</th><th>Path</th><th>Status</th><th>Date</th><th>ID</th></tr>
+	<tr><th><?= resendE('Method') ?></th><th><?= resendE('Path') ?></th><th><?= resendE('Status') ?></th><th><?= resendE('Date') ?></th><th><?= resendE('ID') ?></th></tr>
 	<?php foreach($logs as $l): ?>
 	<?php $status = $l['response_status'] ?? ($l['status_code'] ?? ($l['status'] ?? '')); ?>
 	<tr>

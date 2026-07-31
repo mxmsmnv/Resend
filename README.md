@@ -26,6 +26,7 @@ If this project helps your work, consider supporting future development: [GitHub
 - Lists sent email, received email, attachments, API logs and delivery signals.
 - Includes safe simulator test sends using `resend.dev` recipients.
 - Stores API keys and webhook secrets encrypted in a dedicated settings table.
+- Includes bundled admin language files for English, French, German and Spanish.
 
 ## Admin Area
 
@@ -41,6 +42,10 @@ Resend adds a Setup > Resend admin section where site editors can:
 - review API request logs;
 - send safe test emails;
 - open module settings from the shared admin navigation.
+
+## Localization
+
+Bundled ProcessWire language CSV files live in `languages/`: English, French, German and Spanish. Import them from ProcessWire's language editor when a multilingual admin needs localized Resend screens.
 
 ## Website Integration
 

@@ -15,10 +15,10 @@ foreach($templates as $t) {
 
 <div class="uk-grid-small uk-flex-bottom uk-margin-medium-bottom" uk-grid>
 	<div class="uk-width-expand@m">
-		<p class="uk-text-muted uk-margin-remove">Create reusable email bodies, save drafts, then publish the version that should be used by template sends.</p>
+		<p class="uk-text-muted uk-margin-remove"><?= resendE('Create reusable email bodies, save drafts, then publish the version that should be used by template sends.') ?></p>
 	</div>
 	<div class="uk-width-auto@m">
-		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>broadcasts/">Broadcasts</a>
+		<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>broadcasts/"><?= resendE('Broadcasts') ?></a>
 	</div>
 </div>
 
@@ -32,8 +32,8 @@ foreach($templates as $t) {
 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom">
 	<div class="uk-grid-medium uk-grid-divider" uk-grid>
 		<div class="uk-width-1-3@l">
-			<h3 class="uk-margin-remove-top">Create Template</h3>
-			<p class="uk-text-muted">Start a reusable draft with metadata and HTML. Open it after creation to keep editing and publish when ready.</p>
+			<h3 class="uk-margin-remove-top"><?= resendE('Create Template') ?></h3>
+			<p class="uk-text-muted"><?= resendE('Start a reusable draft with metadata and HTML. Open it after creation to keep editing and publish when ready.') ?></p>
 			<?= resendNote("Send with <code>\$mail->useTemplate('idOrAlias', ['VAR' => 'value'])</code>.") ?>
 		</div>
 		<div class="uk-width-2-3@l">
@@ -41,16 +41,16 @@ foreach($templates as $t) {
 		<?= resendCsrf($csrf) ?>
 		<input type="hidden" name="action" value="create">
 		<div class="uk-grid-medium" uk-grid>
-			<div class="uk-width-1-2@m"><label class="uk-form-label">Name</label><input class="uk-input" type="text" name="name" required></div>
-			<div class="uk-width-1-2@m"><label class="uk-form-label">Alias</label><input class="uk-input" type="text" name="alias" placeholder="welcome-email"></div>
-			<div class="uk-width-1-2@m"><label class="uk-form-label">Subject</label><input class="uk-input" type="text" name="subject"></div>
-			<div class="uk-width-1-2@m"><label class="uk-form-label">From</label><input class="uk-input" type="text" name="from" placeholder="Name &lt;me@example.com&gt;"></div>
+			<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('Name') ?></label><input class="uk-input" type="text" name="name" required></div>
+			<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('Alias') ?></label><input class="uk-input" type="text" name="alias" placeholder="welcome-email"></div>
+			<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('Subject') ?></label><input class="uk-input" type="text" name="subject"></div>
+			<div class="uk-width-1-2@m"><label class="uk-form-label"><?= resendE('From') ?></label><input class="uk-input" type="text" name="from" placeholder="Name &lt;me@example.com&gt;"></div>
 		</div>
 		<div class="uk-margin">
-			<label class="uk-form-label">HTML Body</label>
+			<label class="uk-form-label"><?= resendE('HTML Body') ?></label>
 			<textarea class="uk-textarea" name="html" rows="6" required></textarea>
 		</div>
-		<p class="uk-margin-remove-bottom"><button type="submit" class="uk-button uk-button-primary">Create Draft</button></p>
+		<p class="uk-margin-remove-bottom"><button type="submit" class="uk-button uk-button-primary"><?= resendE('Create Draft') ?></button></p>
 	</form>
 		</div>
 	</div>
@@ -60,18 +60,18 @@ foreach($templates as $t) {
 	<div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom">
 		<div class="uk-grid-medium uk-flex-middle" uk-grid>
 			<div class="uk-width-expand@m">
-				<h3 class="uk-margin-remove-top">No Templates Yet</h3>
-				<p class="uk-margin-remove-bottom">Create a draft and publish it before using template sends.</p>
+				<h3 class="uk-margin-remove-top"><?= resendE('No Templates Yet') ?></h3>
+				<p class="uk-margin-remove-bottom"><?= resendE('Create a draft and publish it before using template sends.') ?></p>
 			</div>
 			<div class="uk-width-auto@m">
-				<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>properties/">Contact Properties</a>
+				<a class="uk-button uk-button-default" style="text-decoration: none;" href="<?= $adminUrl ?>properties/"><?= resendE('Contact Properties') ?></a>
 			</div>
 		</div>
 	</div>
 <?php else: ?>
 <div class="uk-overflow-auto uk-margin-medium-bottom">
 <table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
-	<tr><th>Name</th><th>Alias</th><th>Status</th><th>ID</th><th>Updated</th><th>Actions</th></tr>
+	<tr><th><?= resendE('Name') ?></th><th><?= resendE('Alias') ?></th><th><?= resendE('Status') ?></th><th><?= resendE('ID') ?></th><th><?= resendE('Updated') ?></th><th><?= resendE('Actions') ?></th></tr>
 	<?php foreach($templates as $t): ?>
 	<tr>
 		<td><a href="<?= $adminUrl ?>template/?id=<?= rawurlencode($t['id']) ?>"><?= $sanitizer->entities($t['name'] ?? '') ?></a></td>

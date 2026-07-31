@@ -46,8 +46,8 @@ arsort($statusCounts);
 	</div>
 	<div class="uk-width-auto@m">
 		<div class="uk-grid-medium uk-child-width-auto uk-flex-right@m" uk-grid>
-			<div><a class="uk-button <?= $received ? 'uk-button-default' : 'uk-button-primary' ?>" style="text-decoration: none;" href="<?= $adminUrl ?>emails/">Sent</a></div>
-			<div><a class="uk-button <?= $received ? 'uk-button-primary' : 'uk-button-default' ?>" style="text-decoration: none;" href="<?= $adminUrl ?>received/">Received</a></div>
+			<div><a class="uk-button <?= $received ? 'uk-button-default' : 'uk-button-primary' ?>" style="text-decoration: none;" href="<?= $adminUrl ?>emails/"><?= resendE('Sent') ?></a></div>
+			<div><a class="uk-button <?= $received ? 'uk-button-primary' : 'uk-button-default' ?>" style="text-decoration: none;" href="<?= $adminUrl ?>received/"><?= resendE('Received') ?></a></div>
 		</div>
 	</div>
 </div>
@@ -61,7 +61,7 @@ arsort($statusCounts);
 
 <?php if(!$received && count($statusCounts)): ?>
 <div class="uk-card uk-card-default uk-card-body uk-margin-medium-bottom">
-	<h3>Status Mix</h3>
+	<h3><?= resendE('Status Mix') ?></h3>
 	<div class="uk-grid-small uk-child-width-1-2@m" uk-grid="match: > div > .uk-card">
 		<?php foreach($statusCounts as $status => $count): ?>
 		<?php $pct = count($emails) ? (int) round($count / count($emails) * 100) : 0; ?>
@@ -87,19 +87,19 @@ arsort($statusCounts);
 	<div class="uk-card uk-card-default uk-card-body uk-margin-medium-bottom">
 		<h3><?= $received ? 'No Received Emails' : 'No Sent Emails' ?></h3>
 		<p><?= $received ? 'No inbound messages were returned for this page. Confirm inbound routing and MX records in Resend if you expected mail here.' : 'No sent messages were returned for this page. Send a test email to confirm the integration and populate this list.' ?></p>
-		<?php if(!$received): ?><p><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= $adminUrl ?>test/">Send Test</a></p><?php endif; ?>
+		<?php if(!$received): ?><p><a class="uk-button uk-button-primary" style="text-decoration: none;" href="<?= $adminUrl ?>test/"><?= resendE('Send Test') ?></a></p><?php endif; ?>
 	</div>
 <?php elseif($received): ?>
 	<div class="uk-overflow-auto uk-margin-medium-bottom">
 	<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
 		<tr>
-			<th>Message</th>
-			<th>From</th>
-			<th>To</th>
-			<th>Routing</th>
-			<th>Attachments</th>
-			<th>Date</th>
-			<th>Open</th>
+			<th><?= resendE('Message') ?></th>
+			<th><?= resendE('From') ?></th>
+			<th><?= resendE('To') ?></th>
+			<th><?= resendE('Routing') ?></th>
+			<th><?= resendE('Attachments') ?></th>
+			<th><?= resendE('Date') ?></th>
+			<th><?= resendE('Open') ?></th>
 		</tr>
 		<?php foreach($emails as $e): ?>
 		<?php
@@ -119,8 +119,8 @@ arsort($statusCounts);
 				<a href="<?= $adminUrl ?>email/?id=<?= rawurlencode($id) ?>&received=1"><?= $sanitizer->entities($subject) ?></a>
 				<div class="uk-text-meta uk-text-monospace"><?= $sanitizer->entities(strlen($messageId) ? $messageId : $id) ?></div>
 			</td>
-			<td><?= strlen($from) ? $sanitizer->entities($from) : '<span class="uk-text-muted">Not returned</span>' ?></td>
-			<td><?= strlen($to) ? $sanitizer->entities($to) : '<span class="uk-text-muted">Not returned</span>' ?></td>
+			<td><?= strlen($from) ? $sanitizer->entities($from) : '<span class="uk-text-muted">' . resendE('Not returned') . '</span>' ?></td>
+			<td><?= strlen($to) ? $sanitizer->entities($to) : '<span class="uk-text-muted">' . resendE('Not returned') . '</span>' ?></td>
 			<td>
 				<span class="uk-text-meta">CC <?= $cc ?></span><br>
 				<span class="uk-text-meta">BCC <?= $bcc ?></span><br>
@@ -131,11 +131,11 @@ arsort($statusCounts);
 					<span class="uk-label"><?= count($attachments) ?></span>
 					<?php if(isset($attachments[0]['filename'])): ?><div class="uk-text-meta"><?= $sanitizer->entities($attachments[0]['filename']) ?></div><?php endif; ?>
 				<?php else: ?>
-					<span class="uk-text-muted">None</span>
+					<span class="uk-text-muted"><?= resendE('None') ?></span>
 				<?php endif; ?>
 			</td>
 			<td><?= $process->formatDate($e['created_at'] ?? '') ?></td>
-			<td><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>email/?id=<?= rawurlencode($id) ?>&received=1">View</a></td>
+			<td><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>email/?id=<?= rawurlencode($id) ?>&received=1"><?= resendE('View') ?></a></td>
 		</tr>
 		<?php endforeach; ?>
 	</table>
@@ -144,12 +144,12 @@ arsort($statusCounts);
 	<div class="uk-overflow-auto uk-margin-medium-bottom">
 	<table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-small">
 		<tr>
-			<th>Status</th>
-			<th>Message</th>
-			<th>Recipient</th>
-			<th>Sender</th>
-			<th>Date</th>
-			<th>Open</th>
+			<th><?= resendE('Status') ?></th>
+			<th><?= resendE('Message') ?></th>
+			<th><?= resendE('Recipient') ?></th>
+			<th><?= resendE('Sender') ?></th>
+			<th><?= resendE('Date') ?></th>
+			<th><?= resendE('Open') ?></th>
 		</tr>
 		<?php foreach($emails as $e): ?>
 		<?php
@@ -168,9 +168,9 @@ arsort($statusCounts);
 				<div class="uk-text-meta uk-text-monospace"><?= $sanitizer->entities($id) ?></div>
 			</td>
 			<td><?= $sanitizer->entities($to) ?></td>
-			<td><?= strlen($from) ? $sanitizer->entities($from) : '<span class="uk-text-muted">Not returned</span>' ?></td>
+			<td><?= strlen($from) ? $sanitizer->entities($from) : '<span class="uk-text-muted">' . resendE('Not returned') . '</span>' ?></td>
 			<td><?= $process->formatDate($e['created_at'] ?? '') ?></td>
-			<td><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>email/?id=<?= rawurlencode($id) ?>&received=0">View</a></td>
+			<td><a class="uk-button uk-button-default uk-button-small" style="text-decoration: none;" href="<?= $adminUrl ?>email/?id=<?= rawurlencode($id) ?>&received=0"><?= resendE('View') ?></a></td>
 		</tr>
 		<?php endforeach; ?>
 	</table>

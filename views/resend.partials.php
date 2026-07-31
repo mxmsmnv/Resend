@@ -3,6 +3,31 @@
 if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 
 	/**
+	 * Translate UI text through the ProcessResend textdomain.
+	 *
+	 * Views are rendered as plain include files, so shared helpers route
+	 * translatable strings through the owning Process module.
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	function resendT($text) {
+		static $process = null;
+		if($process === null) $process = wire()->modules->get('ProcessResend');
+		return $process ? $process->_((string) $text) : (string) $text;
+	}
+
+	/**
+	 * Translate and entity-encode UI text.
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	function resendE($text) {
+		return wire()->sanitizer->entities(resendT($text));
+	}
+
+	/**
 	 * Render section navigation.
 	 *
 	 * @param string $adminUrl Process page base URL
@@ -63,11 +88,11 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 			$primaryAllowed = !$restricted || in_array($primary, $sendingOnly);
 			$class = $groupActive ? " class='uk-active'" : '';
 			if(!$primaryAllowed) {
-				$out .= "<li class='uk-disabled'><span title='Requires a full access API key'>" . $sanitizer->entities($group['label']) . "</span></li>\n";
+				$out .= "<li class='uk-disabled'><span title='" . resendE('Requires a full access API key') . "'>" . resendE($group['label']) . "</span></li>\n";
 				continue;
 			}
 			$url = $sanitizer->entities($adminUrl . ($primary ? "$primary/" : ''));
-			$out .= "<li$class><a href='$url'>" . $sanitizer->entities($group['label']) . "</a>";
+			$out .= "<li$class><a href='$url'>" . resendE($group['label']) . "</a>";
 			$out .= "</li>\n";
 		}
 		$out .= "</ul>";
@@ -77,16 +102,17 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 				$allowed = !$restricted || in_array($segment, $sendingOnly);
 				$itemClass = $segment === $active ? " class='uk-active'" : '';
 				if(!$allowed) {
-					$out .= "<li class='uk-disabled'><span title='Requires a full access API key'>" . $sanitizer->entities($label) . "</span></li>\n";
+					$out .= "<li class='uk-disabled'><span title='" . resendE('Requires a full access API key') . "'>" . resendE($label) . "</span></li>\n";
 					continue;
 				}
 				$itemUrl = $sanitizer->entities($adminUrl . ($segment ? "$segment/" : ''));
-				$out .= "<li$itemClass><a href='$itemUrl'>" . $sanitizer->entities($label) . "</a></li>\n";
+				$out .= "<li$itemClass><a href='$itemUrl'>" . resendE($label) . "</a></li>\n";
 			}
 			$out .= "</ul></div>";
 		}
 		$settingsUrl = $sanitizer->entities(wire()->config->urls->admin . 'module/edit?name=Resend');
-		$out .= "</div><div class='uk-width-auto'><a class='uk-link-muted uk-display-inline-flex uk-flex-middle' href='$settingsUrl' title='Resend settings' aria-label='Resend settings'>" . resendIcon('settings') . "</a></div></div>\n";
+		$settingsLabel = resendE('Resend settings');
+		$out .= "</div><div class='uk-width-auto'><a class='uk-link-muted uk-display-inline-flex uk-flex-middle' href='$settingsUrl' title='$settingsLabel' aria-label='$settingsLabel'>" . resendIcon('settings') . "</a></div></div>\n";
 		return $out;
 	}
 
@@ -116,6 +142,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 	 */
 	function resendActionForm($url, array $fields, $label, $csrf, $class = '', $confirm = '') {
 		$sanitizer = wire()->sanitizer;
+		$confirm = strlen((string) $confirm) ? resendT($confirm) : '';
 		$confirm = str_replace(["\\", "'", "\r", "\n"], ["\\\\", "\\'", ' ', ' '], (string) $confirm);
 		$onsubmit = strlen($confirm) ? " onsubmit=\"return confirm('" . $sanitizer->entities($confirm) . "')\"" : '';
 		$url = $sanitizer->entities($url);
@@ -133,7 +160,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 			$value = $sanitizer->entities($value);
 			$out .= "<input type='hidden' name='$name' value='$value'>";
 		}
-		$out .= "<button type='submit' class='$buttonClass'>" . $sanitizer->entities($label) . "</button>";
+		$out .= "<button type='submit' class='$buttonClass'>" . resendE($label) . "</button>";
 		$out .= "</form>";
 		return $out;
 	}
@@ -153,7 +180,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 		$sanitizer = wire()->sanitizer;
 		$after = rawurlencode($last['id']);
 		$url = $sanitizer->entities($url);
-		return "<p class='uk-margin-medium-top'><a class='uk-button uk-button-default' href='{$url}?after={$after}'>Next page</a></p>";
+		return "<p class='uk-margin-medium-top'><a class='uk-button uk-button-default' href='{$url}?after={$after}'>" . resendE('Next page') . "</a></p>";
 	}
 
 	/**
@@ -169,9 +196,9 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 		$out = "<div class='uk-card uk-card-default uk-card-body uk-card-small uk-margin-medium-bottom'>";
 		$out .= "<div class='uk-grid-small uk-grid-divider uk-child-width-1-" . min(4, max(1, count($items))) . "@l uk-child-width-1-2@s' uk-grid>";
 		foreach($items as $item) {
-			$label = isset($item['label']) ? (string) $item['label'] : '';
+			$label = isset($item['label']) ? resendE($item['label']) : '';
 			$value = isset($item['value']) ? (string) $item['value'] : '';
-			$note = isset($item['note']) ? (string) $item['note'] : '';
+			$note = isset($item['note']) ? resendT((string) $item['note']) : '';
 			$extra = isset($item['extra']) ? (string) $item['extra'] : '';
 			$out .= "<div>";
 			$out .= "<p class='uk-text-meta uk-text-uppercase uk-margin-remove'>$label</p>";
@@ -228,7 +255,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 			'test' => 'Use a test send after changing configuration, sender defaults, retry settings or template behavior. The Resend simulator addresses let you generate delivered, bounced or complained outcomes without affecting a real recipient.',
 		];
 		if(!isset($intros[$screen])) return '';
-		return "<p class='uk-text-muted uk-margin-medium-bottom'>{$intros[$screen]}</p>";
+		return "<p class='uk-text-muted uk-margin-medium-bottom'>" . resendE($intros[$screen]) . "</p>";
 	}
 
 	/**
@@ -239,7 +266,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 	 * @return string
 	 */
 	function resendNote($html) {
-		return "<p class='uk-text-meta uk-margin-small-top'>$html</p>";
+		return "<p class='uk-text-meta uk-margin-small-top'>" . resendT($html) . "</p>";
 	}
 
 	/**
@@ -250,8 +277,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 	 * @return string
 	 */
 	function resendEmptyRow($cols, $message) {
-		$sanitizer = wire()->sanitizer;
-		return "<tr><td class='uk-text-center uk-text-muted' colspan='" . (int) $cols . "'>" . $sanitizer->entities($message) . "</td></tr>";
+		return "<tr><td class='uk-text-center uk-text-muted' colspan='" . (int) $cols . "'>" . resendE($message) . "</td></tr>";
 	}
 
 	/**
@@ -261,8 +287,7 @@ if(!function_exists(__NAMESPACE__ . '\resendNav')) {
 	 * @return string
 	 */
 	function resendEmpty($message) {
-		$sanitizer = wire()->sanitizer;
-		return "<div class='uk-alert-warning' uk-alert><p>" . $sanitizer->entities($message) . "</p></div>";
+		return "<div class='uk-alert-warning' uk-alert><p>" . resendE($message) . "</p></div>";
 	}
 
 	/**
