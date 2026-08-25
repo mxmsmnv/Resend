@@ -27,6 +27,7 @@ require_once __DIR__ . '/src/Broadcasts.php';
 require_once __DIR__ . '/src/Webhooks.php';
 require_once __DIR__ . '/src/Logs.php';
 require_once __DIR__ . '/src/Stats.php';
+require_once __DIR__ . '/src/McpProviderTrait.php';
 
 /**
  * Resend
@@ -58,16 +59,19 @@ require_once __DIR__ . '/src/Stats.php';
 
 class Resend extends WireMail implements Module, ConfigurableModule {
 
+	use ResendMcpProviderTrait;
+
 	public static function getModuleInfo() {
 		return [
 			'title' => 'Resend',
 			'summary' => 'Send email via the Resend API. Full API client: emails, batch, scheduling, domains, contacts, segments, topics, templates, broadcasts, webhooks, logs.',
-			'version' => 101,
+			'version' => 102,
 			'author' => 'Maxim Semenov',
 			'href' => 'https://github.com/mxmsmnv/Resend',
 			'icon' => 'envelope-o',
 			'singular' => false,
 			'autoload' => false,
+			'mcpProvider' => true,
 			'requires' => [
 				'ProcessWire>=3.0.184',
 				'PHP>=8.1',

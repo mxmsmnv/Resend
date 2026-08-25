@@ -17,7 +17,7 @@ class ProcessResend extends Process implements Module {
 		return [
 			'title' => 'Resend Admin',
 			'summary' => 'Admin interface for the Resend email platform.',
-			'version' => 101,
+			'version' => 102,
 			'author' => 'Maxim Semenov',
 			'icon' => 'envelope-o',
 			'requires' => ['Resend'],

@@ -12,7 +12,7 @@ use ProcessWire\WireHttp;
 class Client {
 
 	const API_BASE = 'https://api.resend.com';
-	const USER_AGENT = 'Resend-ProcessWire/1.0.1 (+https://github.com/mxmsmnv/Resend)';
+	const USER_AGENT = 'Resend-ProcessWire/1.0.2 (+https://github.com/mxmsmnv/Resend)';
 
 	/** @var Wire Owning module, used to wire WireHttp instances */
 	protected $wire;

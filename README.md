@@ -141,6 +141,13 @@ The ProcessWire root is auto-detected. Use `PW_PATH=/path/to/pw-root` when runni
 - A Resend account
 - A verified sending domain for production email
 
+## MCP Server integration
+
+When the optional first-party MCP Server is installed, Resend contributes the
+read-only `resend_status` tool. It reports local configuration readiness without
+making an external API request or exposing keys, webhook secrets, recipients,
+messages, contacts, or logs. Remote sending is intentionally not registered.
+
 ## Documentation
 
 See [DOCUMENTATION.md](DOCUMENTATION.md) for setup, configuration, API reference and admin workflows.
