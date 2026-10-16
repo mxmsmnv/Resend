@@ -148,6 +148,12 @@ read-only `resend_status` tool. It reports local configuration readiness without
 making an external API request or exposing keys, webhook secrets, recipients,
 messages, contacts, or logs. Remote sending is intentionally not registered.
 
+PocketWire may opt into the module through its separate read-only provider.
+That surface requires the current ProcessWire actor to have `resend-admin` and
+returns only module/version status plus explicit non-exposure flags. It never
+reports whether keys, senders, webhooks, or delivery data exist, and it never
+makes a Resend request or registers a write/send action.
+
 ## Documentation
 
 See [DOCUMENTATION.md](DOCUMENTATION.md) for setup, configuration, API reference and admin workflows.

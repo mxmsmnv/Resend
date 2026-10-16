@@ -276,6 +276,15 @@ All mutating actions are POST with CSRF validation (`hasValidToken()`).
 
 Bundled ProcessWire language CSV files are available in `languages/` for English, French, German and Spanish. Import the matching CSV from ProcessWire's language editor to localize the Resend admin screens and module configuration labels.
 
+## PocketWire integration
+
+The opt-in PocketWire provider is deliberately narrower than the administration
+and PHP APIs. A current logged-in actor with `resend-admin` may read one local
+status DTO containing the module version and explicit non-exposure flags. The
+provider does not inspect or reveal configuration, credentials, sender or
+webhook readiness, delivery records, contacts, recipients, or message content;
+it performs no external request and exposes no mutation or send action.
+
 ## CLI
 
 `bin/resend` bootstraps ProcessWire (walks up from the script, then from the current working directory, to find `index.php` + `wire/`; the cwd pass covers symlinked module directories; override with the `PW_PATH` environment variable) and dispatches to `Smnv\Resend\Cli`.

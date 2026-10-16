@@ -27,7 +27,7 @@ class ResendWebhooks extends WireData implements Module {
 		return [
 			'title' => 'Resend Webhooks',
 			'summary' => 'Receives Resend webhook events at /resend-webhook/, verifies signatures, stores events locally.',
-			'version' => 102,
+			'version' => 103,
 			'author' => 'Maxim Semenov',
 			'icon' => 'plug',
 			'singular' => true,

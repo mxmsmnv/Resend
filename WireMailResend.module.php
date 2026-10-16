@@ -16,7 +16,7 @@ class WireMailResend extends Resend {
 		return [
 			'title' => 'WireMail Resend',
 			'summary' => 'Compatibility alias for selecting Resend in modules that list WireMail providers by class name.',
-			'version' => 102,
+			'version' => 103,
 			'author' => 'Maxim Semenov',
 			'href' => 'https://github.com/mxmsmnv/Resend',
 			'icon' => 'envelope-o',
